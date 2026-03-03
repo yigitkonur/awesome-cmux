@@ -2,8 +2,6 @@
 
 > A curated list of high-quality resources for **[cmux](https://github.com/manaflow-ai/cmux)** — the Ghostty-based macOS terminal for running coding agents in parallel.
 
-Inspired by [awesome-webmcp](https://github.com/webmcpnet/awesome-webmcp).
-
 > [!IMPORTANT]
 > This list is for **`manaflow-ai/cmux`**. Do not confuse it with other unrelated `cmux` projects (for example the Go library by soheilhy).
 
