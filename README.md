@@ -106,8 +106,8 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [aannoo/hcom](https://github.com/aannoo/hcom) | `orchestrate` | Spawns workspaces via `cmux new-workspace`, one of 24 terminal backends | Rust · ★148 |
-| [HazAT/pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | `orchestrate` | Splits panes, relays tasks, polls `read-screen` for completion. cmux/tmux/zellij | TypeScript · ★76 |
+| [aannoo/hcom](https://github.com/aannoo/hcom) | `orchestrate` | Spawns workspaces via `cmux new-workspace`, one of 24 terminal backends | Rust · ★149 |
+| [HazAT/pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | `orchestrate` | Splits panes, relays tasks, polls `read-screen` for completion. cmux/tmux/zellij | TypeScript · ★77 |
 | [dagster-io/erk](https://github.com/dagster-io/erk) | `orchestrate` `worktree` | Opens PRs in dedicated cmux workspaces via `cmux checkout`/`cmux teleport` | Python · ★76 |
 | [burggraf/pi-teams](https://github.com/burggraf/pi-teams) | `orchestrate` | cmux `TerminalAdapter`: splits, liveness checks, workspace isolation | TypeScript · ★37 |
 | [bjacobso/pimux](https://github.com/bjacobso/pimux) | `orchestrate` | cmux-mandatory Effect service: per-task workspaces, sidebar status state machine | TypeScript |
@@ -256,7 +256,7 @@ brew install --cask cmux-nightly  # nightly
 ### Upstream
 
 - [Ghostty](https://ghostty.org/) ([docs](https://ghostty.org/docs) · [config](https://ghostty.org/docs/config) · [source](https://github.com/ghostty-org/ghostty)) — the terminal engine under cmux.
-- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★23458
+- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★23462
 
 ---
 
