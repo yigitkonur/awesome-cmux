@@ -316,16 +316,14 @@ Extensions that give Claude Code native awareness and control of cmux surfaces, 
 
 ## Pi Agent Extensions
 
-Extensions for the [Pi](https://github.com/microsoft/pi) coding agent that integrate with cmux's sidebar, notifications, and browser.
+Extensions for the [Pi](https://github.com/microsoft/pi) coding agent that integrate with cmux's sidebar, notifications, and browser. Two architectural camps: **socket-based** (espennilsen, sasha) using direct Unix socket JSON-RPC, and **CLI-subprocess** (javiermolinar, joelhooks, simonjohansson, storelayer) calling `cmux` as a child process.
 
-- [espennilsen/pi](https://github.com/espennilsen/pi) — Pi agent home with extensions including pi-cmux for sidebar/notifications. TypeScript · 27 stars
-- [sasha-computer/pi-cmux](https://github.com/sasha-computer/pi-cmux) — Context-aware notifications, sidebar status, and browser automation via cmux socket API. TypeScript · 13 stars
-- [javiermolinar/pi-cmux](https://github.com/javiermolinar/pi-cmux) — cmux-powered terminal workflows for Pi: notifications, split panes, zoxide jumps, review helpers. TypeScript · 3 stars
-- [joelhooks/pi-cmux](https://github.com/joelhooks/pi-cmux) — Sidebar status, notifications, live tool activity, and workspace control. TypeScript · 1 star
-- [simonjohansson/pi-cmux](https://github.com/simonjohansson/pi-cmux) — cmux integration for Pi. TypeScript
-- [benjaminmodayil/pi-cmux-notify](https://github.com/benjaminmodayil/pi-cmux-notify) — Pi extension for cmux notification relay.
-- [storelayer/pi-cmux-browser](https://github.com/storelayer/pi-cmux-browser) — Pi agent & skill for web dev with Playwright — browse, inspect, test web apps via cmux browser. JavaScript
-- [Whamp/pi-interactive-subagents-tmux](https://github.com/Whamp/pi-interactive-subagents-tmux) — Fork of pi-interactive-subagents replacing cmux with tmux. TypeScript
+- [espennilsen/pi](https://github.com/espennilsen/pi) — The official Pi framework repository with a built-in cmux extension (`@e9n/pi-cmux`) that speaks cmux's Unix domain socket JSON-RPC protocol directly — pushing live agent status to the sidebar, sending debounced surface-targeted notifications, and giving the LLM 7 tools for workspace management and full browser automation. TypeScript · 27 stars
+- [sasha-computer/pi-cmux](https://github.com/sasha-computer/pi-cmux) — The pioneering independent pi-cmux extension using a persistent Unix socket client to speak cmux's v2 JSON-RPC protocol — fires context-aware notifications summarizing what Pi actually did ("Updated auth.ts", "bash command failed") and maintains 4 real-time sidebar pills tracking model, state, thinking level, and token usage. TypeScript · 13 stars
+- [javiermolinar/pi-cmux](https://github.com/javiermolinar/pi-cmux) — A comprehensive workflow toolkit (published to npm as `pi-cmux`) using `cmux new-split` and `cmux respawn-pane` for adjacent pane management — 12+ slash commands covering pi session splits, shell tool launches, zoxide directory jumps, git-worktree session handoffs, and GitHub PR review splits, with configurable smart notifications. TypeScript · 3 stars
+- [joelhooks/pi-cmux](https://github.com/joelhooks/pi-cmux) — A polished standalone cmux extension driven by the `cmux` CLI with live sidebar heartbeat (tool name + elapsed time every 3s), AI-generated session naming via `claude-haiku-4-5`, worker mode for orchestrated subagents, and optional peon-ping sound alerts — exposing `cmux`, `cmux_status`, and `cmux_notify` tools to the LLM. TypeScript · 1 star
+- [simonjohansson/pi-cmux](https://github.com/simonjohansson/pi-cmux) — A minimalist pi-cmux integration with maximum flexibility: a single `cmux_cli` tool passes any argv array directly to the cmux binary, exposing the full cmux command surface to the LLM through one interface, plus `/cmux` and `/cmux-notify` slash commands and configurable `CMUX_CLI_PATH` override. TypeScript
+- [storelayer/pi-cmux-browser](https://github.com/storelayer/pi-cmux-browser) — A browser-specialized Pi extension that wraps the entire `cmux browser` CLI surface with 36+ actions — open, navigate, snapshot accessibility trees, click, fill, eval JS, inspect console/errors/cookies/storage — with persistent surface tracking so the LLM maintains browser state across multi-step web development tasks. JavaScript
 
 ---
 
