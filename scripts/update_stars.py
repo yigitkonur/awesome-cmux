@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
-"""Update star counts and last-commit dates in README.md from the GitHub API."""
+"""Update star counts in README.md from the GitHub API."""
 
 import json
 import os
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 STAR_THRESHOLD = 5
 README = Path(__file__).resolve().parent.parent / "README.md"
-REPO_PATTERN = re.compile(r"github\.com/([\w.\-]+/[\w.\-]+)")
-STAR_PATTERN = re.compile(r" · ★\d+")
+# Match github.com/owner/repo but NOT deeper paths like /releases, /discussions, etc.
+REPO_PATTERN = re.compile(r"github\.com/([\w.\-]+/[\w.\-]+?)(?:\)|\s|/|$)")
+STAR_SUFFIX = re.compile(r" · ★\d+")
+
+# Known non-repo paths to skip
+SKIP_SLUGS = {
+    "ghostty-org/ghostty",  # upstream, not in our list format
+    "orgs", "topics", "settings",
+}
 
 
 def gh_graphql(query: str) -> dict:
@@ -21,97 +27,108 @@ def gh_graphql(query: str) -> dict:
         capture_output=True, text=True, timeout=30,
     )
     if result.returncode != 0:
-        print(f"GraphQL error: {result.stderr}", file=sys.stderr)
-        return {}
+        return {"errors": result.stderr}
     return json.loads(result.stdout)
 
 
-def fetch_repo_meta(slugs: list[str]) -> dict[str, dict]:
-    """Fetch stars + pushedAt for up to 100 repos via a single GraphQL query."""
-    meta = {}
-    # GitHub GraphQL max aliases ~100; batch if needed
-    for batch_start in range(0, len(slugs), 80):
-        batch = slugs[batch_start:batch_start + 80]
-        fragments = []
-        for i, slug in enumerate(batch):
+def fetch_batch(slugs: list[str]) -> dict[str, dict]:
+    """Fetch stars for a batch. On failure, retry one-by-one."""
+    fragments = []
+    for i, slug in enumerate(slugs):
+        owner, name = slug.split("/", 1)
+        fragments.append(
+            f'r{i}: repository(owner: "{owner}", name: "{name}") '
+            f"{{ stargazerCount pushedAt isArchived }}"
+        )
+    query = "{ " + " ".join(fragments) + " }"
+    resp = gh_graphql(query)
+
+    if "errors" in resp and "data" not in resp:
+        # Batch failed — retry individually
+        print(f"  Batch of {len(slugs)} failed, retrying individually...")
+        results = {}
+        for slug in slugs:
             owner, name = slug.split("/", 1)
-            alias = f"r{i}"
-            fragments.append(
-                f'{alias}: repository(owner: "{owner}", name: "{name}") {{'
-                f" stargazerCount pushedAt isArchived }}"
-            )
-        query = "{ " + " ".join(fragments) + " }"
-        data = gh_graphql(query).get("data", {})
-        for i, slug in enumerate(batch):
-            info = data.get(f"r{i}")
+            q = f'{{ repo: repository(owner: "{owner}", name: "{name}") {{ stargazerCount pushedAt isArchived }} }}'
+            r = gh_graphql(q)
+            info = (r.get("data") or {}).get("repo")
             if info:
-                meta[slug] = {
+                results[slug] = {
                     "stars": info["stargazerCount"],
                     "pushed": info["pushedAt"],
                     "archived": info["isArchived"],
                 }
-    return meta
+            else:
+                print(f"  Skipping {slug}: not found or API error")
+        return results
 
-
-def age_label(iso_date: str) -> str:
-    pushed = datetime.fromisoformat(iso_date.replace("Z", "+00:00"))
-    delta = datetime.now(timezone.utc) - pushed
-    days = delta.days
-    if days <= 7:
-        return ""
-    if days <= 30:
-        return f"{days}d ago"
-    months = days // 30
-    if months < 12:
-        return f"{months}mo ago"
-    return f"{days // 365}y ago"
+    data = resp.get("data", {})
+    results = {}
+    for i, slug in enumerate(slugs):
+        info = data.get(f"r{i}")
+        if info:
+            results[slug] = {
+                "stars": info["stargazerCount"],
+                "pushed": info["pushedAt"],
+                "archived": info["isArchived"],
+            }
+    return results
 
 
 def main():
     text = README.read_text()
     lines = text.split("\n")
 
-    # Collect all repo slugs
+    # Collect all unique repo slugs from entry lines (lines starting with | [ or - [)
     slugs = set()
     for line in lines:
-        m = REPO_PATTERN.search(line)
-        if m:
-            slug = m.group(1).rstrip(")")
-            if slug.count("/") == 1:
+        if not (line.strip().startswith("| [") or line.strip().startswith("- [")):
+            continue
+        for m in REPO_PATTERN.finditer(line):
+            slug = m.group(1)
+            if slug.count("/") == 1 and slug not in SKIP_SLUGS:
                 slugs.add(slug)
 
-    print(f"Found {len(slugs)} repo slugs")
-    meta = fetch_repo_meta(sorted(slugs))
+    slug_list = sorted(slugs)
+    print(f"Found {len(slug_list)} repo slugs")
+
+    # Fetch in batches of 50 (conservative to avoid GraphQL limits)
+    meta = {}
+    for i in range(0, len(slug_list), 50):
+        batch = slug_list[i:i + 50]
+        print(f"  Fetching batch {i // 50 + 1} ({len(batch)} repos)...")
+        meta.update(fetch_batch(batch))
+
     print(f"Fetched metadata for {len(meta)} repos")
 
+    # Update star counts in README
     updated = 0
     new_lines = []
     for line in lines:
-        m = REPO_PATTERN.search(line)
-        if m:
-            slug = m.group(1).rstrip(")")
-            info = meta.get(slug)
-            if info:
-                stars = info["stars"]
-                # Remove existing star annotation
-                line = STAR_PATTERN.sub("", line)
-                # Add star count if >= threshold
-                if stars >= STAR_THRESHOLD:
-                    # Find the end of the line to append
-                    line = line.rstrip()
-                    # Remove trailing pipe cell for table rows
-                    if line.endswith("|"):
-                        # Table row — insert before last |
-                        line = line.rstrip("|").rstrip() + f" · ★{stars} |"
-                    else:
-                        line = line + f" · ★{stars}"
-                    updated += 1
+        if line.strip().startswith("| [") or line.strip().startswith("- ["):
+            for m in REPO_PATTERN.finditer(line):
+                slug = m.group(1)
+                info = meta.get(slug)
+                if info:
+                    stars = info["stars"]
+                    # Remove existing star annotation
+                    line = STAR_SUFFIX.sub("", line)
+                    if stars >= STAR_THRESHOLD:
+                        line = line.rstrip()
+                        # For table rows ending with |
+                        if line.endswith("|"):
+                            # Insert before the last |
+                            line = line[:-1].rstrip() + f" · ★{stars} |"
+                        else:
+                            line = line + f" · ★{stars}"
+                        updated += 1
+                    break  # Only process first repo link per line
         new_lines.append(line)
 
     new_text = "\n".join(new_lines)
     if new_text != text:
         README.write_text(new_text)
-        print(f"Updated {updated} star counts")
+        print(f"Updated {updated} star counts in README.md")
     else:
         print("No changes needed")
 
