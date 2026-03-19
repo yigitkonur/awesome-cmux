@@ -256,7 +256,7 @@ brew install --cask cmux-nightly  # nightly
 ### Upstream
 
 - [Ghostty](https://ghostty.org/) ([docs](https://ghostty.org/docs) · [config](https://ghostty.org/docs/config) · [source](https://github.com/ghostty-org/ghostty)) — the terminal engine under cmux.
-- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux.
+- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★23456
 
 ---
 
