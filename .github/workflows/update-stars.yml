@@ -5,14 +5,13 @@ on:
     - cron: '0 6 * * *' # 6 AM UTC daily
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
 
       - uses: actions/setup-python@v5
         with:
@@ -21,7 +20,7 @@ jobs:
       - name: Update stars via GitHub API
         run: python scripts/update_stars.py
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Commit if changed
         run: |
