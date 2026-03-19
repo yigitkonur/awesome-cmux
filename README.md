@@ -106,7 +106,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [aannoo/hcom](https://github.com/aannoo/hcom) | `orchestrate` | Spawns workspaces via `cmux new-workspace`, one of 24 terminal backends | Rust · ★147 |
+| [aannoo/hcom](https://github.com/aannoo/hcom) | `orchestrate` | Spawns workspaces via `cmux new-workspace`, one of 24 terminal backends | Rust · ★148 |
 | [HazAT/pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | `orchestrate` | Splits panes, relays tasks, polls `read-screen` for completion. cmux/tmux/zellij | TypeScript · ★76 |
 | [dagster-io/erk](https://github.com/dagster-io/erk) | `orchestrate` `worktree` | Opens PRs in dedicated cmux workspaces via `cmux checkout`/`cmux teleport` | Python · ★76 |
 | [burggraf/pi-teams](https://github.com/burggraf/pi-teams) | `orchestrate` | cmux `TerminalAdapter`: splits, liveness checks, workspace isolation | TypeScript · ★37 |
@@ -158,7 +158,7 @@ brew install --cask cmux-nightly  # nightly
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
 | [AtAFork/ghostty-claude-code-session-restore](https://github.com/AtAFork/ghostty-claude-code-session-restore) | `monitor` | Snapshots sessions every 2s, restores into correct cmux surfaces on relaunch | Python · ★21 |
-| [owizdom/context-bridge-for-cmux](https://github.com/owizdom/context-bridge-for-cmux) | `monitor` | Polls socket, reads scrollback, stores in SQLite, auto-injects context handoff prompts | Go |
+| [owizdom/context-brdige-for-cmux](https://github.com/owizdom/context-brdige-for-cmux) | `monitor` | Polls socket, reads scrollback, stores in SQLite, auto-injects context handoff prompts | Go |
 | [alaasdk/cmux-ctl](https://github.com/alaasdk/cmux-ctl) | `monitor` | Real-time TUI dashboard of all workspaces with agent send/stop shortcuts | Python |
 | [taichiiwamoto-s/cmux-context](https://github.com/taichiiwamoto-s/cmux-context) | `monitor` | Scrapes Claude status bar from every workspace, renders context-fill dashboard | Shell |
 | [ensarkovankaya/cmux-mirror](https://github.com/ensarkovankaya/cmux-mirror) | `monitor` | Mirrors remote cmux layout to local instance over SSH | Python |
@@ -198,7 +198,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [craigsc/cmux](https://github.com/craigsc/cmux) | `worktree` | `cmux new <branch>` for isolated worktrees. Tab completion, merge/teardown | Shell · ★367 |
+| [craigsc/cmux](https://github.com/craigsc/cmux) | `worktree` | `cmux new <branch>` for isolated worktrees. Tab completion, merge/teardown | Shell · ★368 |
 | [maedana/crmux](https://github.com/maedana/crmux) | `monitor` | Rust tmux sidebar: live status, model, context usage, permission alerts | Rust · ★18 |
 | [wolffiex/cmux](https://github.com/wolffiex/cmux) | `layout` | Bun tmux manager (~22ms): popup carousel, 10 preset layouts, AI summaries | TypeScript |
 | [theforager/cmux](https://github.com/theforager/cmux) | `monitor` | Interactive session selector with live status. Optimized for mobile SSH | Shell |
@@ -246,7 +246,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Description | Lang |
 |------|-------------|------|
-| [manaflow-ai/manaflow](https://github.com/manaflow-ai/manaflow) | Primary monorepo. Contains `cmux-proxy` and `cmux-env` Rust crates | TypeScript · ★933 |
+| [manaflow-ai/manaflow](https://github.com/manaflow-ai/manaflow) | Primary monorepo. Contains `cmux-proxy` and `cmux-env` Rust crates | TypeScript · ★934 |
 | [webkaz/cmux-intel-builds](https://github.com/webkaz/cmux-intel-builds) | Builds unsigned Intel Mac x86_64 DMGs by polling releases every 6h | — |
 | [lawrencecchen/cmux-proxy](https://github.com/lawrencecchen/cmux-proxy) | Reverse proxy routing to per-workspace loopback IPs. Optional LD_PRELOAD shim | Rust |
 | [lawrencecchen/cmux-env](https://github.com/lawrencecchen/cmux-env) | Daemon sharing env vars across shells/projects. Bash/zsh/fish hooks, dotenv | Rust |
@@ -256,7 +256,7 @@ brew install --cask cmux-nightly  # nightly
 ### Upstream
 
 - [Ghostty](https://ghostty.org/) ([docs](https://ghostty.org/docs) · [config](https://ghostty.org/docs/config) · [source](https://github.com/ghostty-org/ghostty)) — the terminal engine under cmux.
-- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★23456
+- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★23458
 
 ---
 
