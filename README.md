@@ -47,7 +47,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [HazAT/pi-config](https://github.com/HazAT/pi-config) | `sidebar` `notify` | Pushes agent status, model, tokens, and active tool to cmux sidebar on every lifecycle event | TypeScript · ★177 |
+| [HazAT/pi-config](https://github.com/HazAT/pi-config) | `sidebar` `notify` | Pushes agent status, model, tokens, and active tool to cmux sidebar on every lifecycle event | TypeScript · ★180 |
 | [tslateman/cmux-claude-code](https://github.com/tslateman/cmux-claude-code) | `sidebar` `notify` | 6-hook plugin: emoji tool names, logarithmic progress bar, desktop notification on completion | Shell |
 | [hopchouinard/cmux-plugin](https://github.com/hopchouinard/cmux-plugin) | `sidebar` `notify` | Auto-renames workspace tab to git repo name, notifies on completion, includes restraint rules | Shell |
 | [blueraai/bluera-base](https://github.com/blueraai/bluera-base) | `hooks` | Skill package with 5 reference docs and benchmark evaluations for cmux task performance | — |
@@ -71,7 +71,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [espennilsen/pi](https://github.com/espennilsen/pi) | `sidebar` `browser` | Built-in `@e9n/pi-cmux`: socket JSON-RPC, 7 LLM tools for workspace and browser | TypeScript · ★46 |
+| [espennilsen/pi](https://github.com/espennilsen/pi) | `sidebar` `browser` | Built-in `@e9n/pi-cmux`: socket JSON-RPC, 7 LLM tools for workspace and browser | TypeScript · ★55 |
 | [sasha-computer/pi-cmux](https://github.com/sasha-computer/pi-cmux) | `sidebar` `notify` | Persistent socket client, 4 live sidebar pills (model, state, thinking, tokens) | TypeScript · ★13 |
 | [javiermolinar/pi-cmux](https://github.com/javiermolinar/pi-cmux) | `layout` `notify` | 12+ slash commands: splits, zoxide jumps, worktree handoffs, PR review panes | TypeScript |
 | [joelhooks/pi-cmux](https://github.com/joelhooks/pi-cmux) | `sidebar` `notify` | 3s sidebar heartbeat, AI session naming via Haiku, worker mode for subagents | TypeScript |
@@ -82,9 +82,9 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [kdcokenny/ocx](https://github.com/kdcokenny/ocx) | `sidebar` `notify` | Pushes status, progress, logs, flash triggers on every OpenCode lifecycle event | TypeScript · ★435 |
-| [kdcokenny/opencode-notify](https://github.com/kdcokenny/opencode-notify) | `notify` | Routes OS notifications through `cmux notify` when workspace ID is set | TypeScript · ★105 |
-| [0xCaso/opencode-cmux](https://github.com/0xCaso/opencode-cmux) | `sidebar` `notify` | Status pills, todo-driven progress, timeline logs, unread marks — scoped per workspace | TypeScript · ★16 |
+| [kdcokenny/ocx](https://github.com/kdcokenny/ocx) | `sidebar` `notify` | Pushes status, progress, logs, flash triggers on every OpenCode lifecycle event | TypeScript · ★440 |
+| [kdcokenny/opencode-notify](https://github.com/kdcokenny/opencode-notify) | `notify` | Routes OS notifications through `cmux notify` when workspace ID is set | TypeScript · ★106 |
+| [0xCaso/opencode-cmux](https://github.com/0xCaso/opencode-cmux) | `sidebar` `notify` | Status pills, todo-driven progress, timeline logs, unread marks — scoped per workspace | TypeScript · ★17 |
 | [Attamusc/opencode-cmux](https://github.com/Attamusc/opencode-cmux) | `sidebar` | Socket JSON-RPC (~1-2ms), render throttling, log rate limiting, subagent detection | TypeScript |
 | [Joehoel/opencode-cmux](https://github.com/Joehoel/opencode-cmux) | `sidebar` `notify` | OpenCode plugin + Zsh integration polling Azure DevOps and Jira as sidebar pills | Shell |
 
@@ -106,10 +106,10 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [aannoo/hcom](https://github.com/aannoo/hcom) | `orchestrate` | Spawns workspaces via `cmux new-workspace`, one of 24 terminal backends | Rust · ★154 |
-| [HazAT/pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | `orchestrate` | Splits panes, relays tasks, polls `read-screen` for completion. cmux/tmux/zellij | TypeScript · ★99 |
+| [aannoo/hcom](https://github.com/aannoo/hcom) | `orchestrate` | Spawns workspaces via `cmux new-workspace`, one of 24 terminal backends | Rust · ★156 |
+| [HazAT/pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | `orchestrate` | Splits panes, relays tasks, polls `read-screen` for completion. cmux/tmux/zellij | TypeScript · ★102 |
 | [dagster-io/erk](https://github.com/dagster-io/erk) | `orchestrate` `worktree` | Opens PRs in dedicated cmux workspaces via `cmux checkout`/`cmux teleport` | Python · ★76 |
-| [burggraf/pi-teams](https://github.com/burggraf/pi-teams) | `orchestrate` | cmux `TerminalAdapter`: splits, liveness checks, workspace isolation | TypeScript · ★40 |
+| [burggraf/pi-teams](https://github.com/burggraf/pi-teams) | `orchestrate` | cmux `TerminalAdapter`: splits, liveness checks, workspace isolation | TypeScript · ★42 |
 | [bjacobso/pimux](https://github.com/bjacobso/pimux) | `orchestrate` | cmux-mandatory Effect service: per-task workspaces, sidebar status state machine | TypeScript |
 | [eduwass/cru](https://github.com/eduwass/cru) | `orchestrate` `sidebar` | 447-line cmux module, lifecycle phases with SF Symbols, progress-watcher. E2E tests | TypeScript |
 | [rjwittams/flotilla](https://github.com/rjwittams/flotilla) | `orchestrate` `layout` | `CmuxWorkspaceManager` Rust trait: multi-pane YAML templates across all windows | Rust |
@@ -147,7 +147,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [kdcokenny/opencode-worktree](https://github.com/kdcokenny/opencode-worktree) | `worktree` | New cmux workspace per git worktree, detected via env vars | TypeScript · ★325 |
+| [kdcokenny/opencode-worktree](https://github.com/kdcokenny/opencode-worktree) | `worktree` | New cmux workspace per git worktree, detected via env vars | TypeScript · ★329 |
 | [aschreifels/cwt](https://github.com/aschreifels/cwt) | `worktree` `sidebar` | Worktrees in cmux workspaces with splits, badges, bundled agent skills | Go |
 | [bhandeland/fleet](https://github.com/bhandeland/fleet) | `worktree` `orchestrate` | Workspace per branch, sidebar badges, multi-agent team splits. Degrades without cmux | Shell |
 | [tasuku43/kra](https://github.com/tasuku43/kra) | `worktree` | Persistent ticket → filesystem → cmux workspace mapping with auto-reconciliation | Go |
@@ -177,7 +177,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [mkurman/cmux-windows](https://github.com/mkurman/cmux-windows) | — | WPF/ConPTY: sidebar, splits, OSC notifications, WebView2 browser, CLI. 5 releases | C# · ★17 |
+| [mkurman/cmux-windows](https://github.com/mkurman/cmux-windows) | — | WPF/ConPTY: sidebar, splits, OSC notifications, WebView2 browser, CLI. 5 releases | C# · ★18 |
 | [TRINITXX/cmux-windows](https://github.com/TRINITXX/cmux-windows) | — | Fork of mkurman + Claude Code hooks, Zen mode, Dracula/One Dark themes | C# |
 | [aasm3535/wmux](https://github.com/aasm3535/wmux) | — | WinUI 3 + xterm.js: sidebar, splits, OSC notifications, native Mica backdrop | C# |
 | [shogotomita/cmux-win](https://github.com/shogotomita/cmux-win) | — | WPF/ConPTY under active development. 24 test files. Missing browser/persistence | C# |
@@ -198,7 +198,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
-| [craigsc/cmux](https://github.com/craigsc/cmux) | `worktree` | `cmux new <branch>` for isolated worktrees. Tab completion, merge/teardown | Shell · ★399 |
+| [craigsc/cmux](https://github.com/craigsc/cmux) | `worktree` | `cmux new <branch>` for isolated worktrees. Tab completion, merge/teardown | Shell · ★414 |
 | [maedana/crmux](https://github.com/maedana/crmux) | `monitor` | Rust tmux sidebar: live status, model, context usage, permission alerts | Rust · ★19 |
 | [wolffiex/cmux](https://github.com/wolffiex/cmux) | `layout` | Bun tmux manager (~22ms): popup carousel, 10 preset layouts, AI summaries | TypeScript |
 | [theforager/cmux](https://github.com/theforager/cmux) | `monitor` | Interactive session selector with live status. Optimized for mobile SSH | Shell |
@@ -246,7 +246,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Description | Lang |
 |------|-------------|------|
-| [manaflow-ai/manaflow](https://github.com/manaflow-ai/manaflow) | Primary monorepo. Contains `cmux-proxy` and `cmux-env` Rust crates | TypeScript · ★938 |
+| [manaflow-ai/manaflow](https://github.com/manaflow-ai/manaflow) | Primary monorepo. Contains `cmux-proxy` and `cmux-env` Rust crates | TypeScript · ★941 |
 | [webkaz/cmux-intel-builds](https://github.com/webkaz/cmux-intel-builds) | Builds unsigned Intel Mac x86_64 DMGs by polling releases every 6h | — |
 | [lawrencecchen/cmux-proxy](https://github.com/lawrencecchen/cmux-proxy) | Reverse proxy routing to per-workspace loopback IPs. Optional LD_PRELOAD shim | Rust |
 | [lawrencecchen/cmux-env](https://github.com/lawrencecchen/cmux-env) | Daemon sharing env vars across shells/projects. Bash/zsh/fish hooks, dotenv | Rust |
@@ -256,7 +256,7 @@ brew install --cask cmux-nightly  # nightly
 ### Upstream
 
 - [Ghostty](https://ghostty.org/) ([docs](https://ghostty.org/docs) · [config](https://ghostty.org/docs/config) · [source](https://github.com/ghostty-org/ghostty)) — the terminal engine under cmux.
-- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★23891
+- [agent-browser](https://github.com/vercel-labs/agent-browser) — Vercel's browser automation, ported into cmux. · ★24070
 
 ---
 
