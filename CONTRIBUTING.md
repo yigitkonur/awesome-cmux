@@ -14,16 +14,6 @@ Before opening a PR, verify your entry meets **all three**:
 - Empty repos, abandoned forks with no unique value, or spam
 - Repos that mention cmux only in comments or acknowledgments
 
-## Discovery workflow
-
-Start with:
-
-```bash
-rtk python3 scripts/discover_candidates.py --limit-per-signal 20 --minimum-candidate-score 8 --format markdown
-```
-
-Use [docs/research/discover-candidates.md](docs/research/discover-candidates.md) for the workflow details. The report is a review queue, not an auto-add list: `candidate` and `review` results still need human checks for inclusion criteria, section placement, and the final one-line description before editing `README.md`.
-
 ## Entry format
 
 All entries use table format:

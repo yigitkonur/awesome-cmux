@@ -76,6 +76,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
+| [w-winter/dot314](https://github.com/w-winter/dot314) | `sidebar` `notify` | Pi package whose `cmux/` extension syncs sidebar state, token/cost stats, workspace renaming, and attention notifications | TypeScript · ★77 |
 | [espennilsen/pi](https://github.com/espennilsen/pi) | `sidebar` `browser` | Built-in `@e9n/pi-cmux`: socket JSON-RPC, 7 LLM tools for workspace and browser | TypeScript · ★68 |
 | [sasha-computer/pi-cmux](https://github.com/sasha-computer/pi-cmux) | `sidebar` `notify` | Persistent socket client, 4 live sidebar pills (model, state, thinking, tokens) | TypeScript · ★14 |
 | [javiermolinar/pi-cmux](https://github.com/javiermolinar/pi-cmux) | `layout` `notify` | 12+ slash commands: splits, zoxide jumps, worktree handoffs, PR review panes | TypeScript · ★6 |
@@ -93,6 +94,7 @@ brew install --cask cmux-nightly  # nightly
 | Repo | Tags | Description | Lang |
 |------|------|-------------|------|
 | [kdcokenny/ocx](https://github.com/kdcokenny/ocx) | `sidebar` `notify` | Pushes status, progress, logs, flash triggers on every OpenCode lifecycle event | TypeScript · ★519 |
+| [kdcokenny/opencode-workspace](https://github.com/kdcokenny/opencode-workspace) | `notify` `orchestrate` | Bundled OpenCode harness with cmux-backed notifications plus planning, delegation, and worktree plugins | TypeScript · ★292 |
 | [kdcokenny/opencode-notify](https://github.com/kdcokenny/opencode-notify) | `notify` | Routes OS notifications through `cmux notify` when workspace ID is set | TypeScript · ★127 |
 | [0xCaso/opencode-cmux](https://github.com/0xCaso/opencode-cmux) | `sidebar` `notify` | Status pills, todo-driven progress, timeline logs, unread marks — scoped per workspace | TypeScript · ★23 |
 | [Attamusc/opencode-cmux](https://github.com/Attamusc/opencode-cmux) | `sidebar` | Socket JSON-RPC (~1-2ms), render throttling, log rate limiting, subagent detection | TypeScript |
@@ -233,6 +235,7 @@ brew install --cask cmux-nightly  # nightly
 
 | Repo | Description | Lang |
 |------|-------------|------|
+| [adibhanna/tsm](https://github.com/adibhanna/tsm) | Terminal session manager with a native cmux backend for workspaces, splits, sidebar sync, and screen capture | Go · ★117 |
 | [danneu/danterm](https://github.com/danneu/danterm) | macOS terminal on libghostty: vertical tabs, tab groups, Claude hooks, Nix module | Swift |
 | [Pollux-Studio/maxc](https://github.com/Pollux-Studio/maxc) | Tauri workspace: terminals + browser + agent orchestration via CLI and socket RPC | Rust |
 | [Kaldy14/clui](https://github.com/Kaldy14/clui) | Electron: project-scoped Claude threads with xterm.js, git, LRU hibernation | TypeScript |
