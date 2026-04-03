@@ -30,6 +30,18 @@ class DiscoveryCoreTests(unittest.TestCase):
             {"manaflow-ai/cmux", "HazAT/pi-config", "llv22/cmux_forward"},
         )
 
+    def test_extract_readme_repo_slugs_handles_url_variants(self):
+        text = """
+| [Repo A](https://github.com/example/alpha/) |
+| [Repo B](https://github.com/example/bravo?tab=readme) |
+| [Repo C](https://github.com/example/charlie). |
+| [Repo D](https://github.com/example/delta/)!
+"""
+        self.assertEqual(
+            dc.extract_existing_repo_slugs(text),
+            {"example/alpha", "example/bravo", "example/charlie", "example/delta"},
+        )
+
     def test_score_repo_evidence_prefers_env_var_hits(self):
         hits = [
             dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=5, path="src/cmux.ts"),
@@ -39,7 +51,40 @@ class DiscoveryCoreTests(unittest.TestCase):
         score = dc.score_evidence(hits)
         self.assertGreaterEqual(score, 10)
 
+    def test_status_review_when_only_weak_hits_inflate_score(self):
+        weak_hits = [
+            dc.EvidenceHit(signal="cmux browser", weight=2, path="src/a.ts"),
+            dc.EvidenceHit(signal="cmux notify", weight=2, path="src/b.ts"),
+            dc.EvidenceHit(signal="cmux preview", weight=2, path="src/c.ts"),
+            dc.EvidenceHit(signal="cmux hub", weight=2, path="src/d.ts"),
+        ]
+        repo = dc.RepoCandidate(
+            slug="example/repo",
+            stars=1,
+            language="TypeScript",
+            updated="2026-04-03",
+            description="desc",
+            archived=False,
+            has_readme=True,
+            already_listed=False,
+            evidence_hits=weak_hits,
+            score=dc.score_evidence(weak_hits),
+            suggested_section="",
+            status="",
+            notes=[],
+        )
+        status = dc.classify_candidate(
+            repo,
+            excluded_slugs=set(),
+            minimum_candidate_score=8,
+        )
+        self.assertEqual(status, "review")
+
     def test_status_candidate_requires_readme_and_not_archived(self):
+        strong_hits = [
+            dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=5, path="src/cmux.ts"),
+            dc.EvidenceHit(signal="CMUX_SURFACE_ID", weight=5, path="README.md"),
+        ]
         repo = dc.RepoCandidate(
             slug="example/repo",
             stars=12,
@@ -49,8 +94,8 @@ class DiscoveryCoreTests(unittest.TestCase):
             archived=False,
             has_readme=True,
             already_listed=False,
-            evidence_hits=[],
-            score=8,
+            evidence_hits=strong_hits,
+            score=dc.score_evidence(strong_hits),
             suggested_section="By Agent > Pi",
             status="",
             notes=[],
