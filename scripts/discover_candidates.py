@@ -130,6 +130,13 @@ def extract_existing_repo_slugs(text: str) -> set[str]:
     return slugs
 
 
+def load_listed_repo_slugs() -> set[str]:
+    try:
+        return extract_existing_repo_slugs(README.read_text())
+    except OSError:
+        return set()
+
+
 def path_confidence_adjustment(path: str) -> int:
     lowered = path.lower()
     for pattern, penalty in NOISY_PATH_PATTERNS:
@@ -438,6 +445,11 @@ def populate_metadata(candidates: dict[str, RepoCandidate], metadata: dict[str, 
         candidate.suggested_section = suggest_section(candidate.slug, candidate.description, candidate.evidence_hits)
 
 
+def mark_listed_candidates(candidates: dict[str, RepoCandidate], listed_slugs: set[str]) -> None:
+    for slug, candidate in candidates.items():
+        candidate.already_listed = slug in listed_slugs
+
+
 def build_candidates(
     signals: tuple[SignalSpec, ...] = SIGNALS,
     *,
@@ -446,6 +458,7 @@ def build_candidates(
 ) -> tuple[list[RepoCandidate], list[str]]:
     discovered, warnings = aggregate_search_hits(signals)
     slugs = sorted(discovered)
+    mark_listed_candidates(discovered, load_listed_repo_slugs())
     metadata, metadata_warnings = fetch_repository_metadata(slugs, batch_size=metadata_batch_size)
     warnings.extend(metadata_warnings)
     populate_metadata(discovered, metadata)
@@ -571,24 +584,13 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Output format.",
     )
     parser.add_argument(
-        "--status",
-        action="append",
-        dest="statuses",
-        help="Status to include in the report. Repeatable. Defaults to candidate and review.",
-    )
-    parser.add_argument(
-        "--all-statuses",
-        action="store_true",
-        help="Include candidate, review, listed, and excluded rows.",
-    )
-    parser.add_argument(
-        "--signal-limit",
+        "--limit-per-signal",
         type=int,
         default=DEFAULT_SIGNAL_LIMIT,
         help="Maximum code-search results per signal.",
     )
     parser.add_argument(
-        "--candidate-score",
+        "--minimum-candidate-score",
         type=int,
         default=DEFAULT_CANDIDATE_SCORE,
         help="Minimum score for candidate classification when high-confidence evidence is present.",
@@ -598,6 +600,16 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         type=int,
         default=DEFAULT_METADATA_BATCH_SIZE,
         help="GraphQL batch size for repo metadata lookups.",
+    )
+    parser.add_argument(
+        "--include-listed",
+        action="store_true",
+        help="Include already-listed repositories in the report.",
+    )
+    parser.add_argument(
+        "--include-excluded",
+        action="store_true",
+        help="Include excluded repositories in the report.",
     )
     return parser.parse_args(argv)
 
@@ -625,15 +637,15 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     included_statuses = set(DEFAULT_INCLUDED_STATUSES)
-    if args.all_statuses:
-        included_statuses = set(STATUS_ORDER)
-    elif args.statuses:
-        included_statuses = set(args.statuses)
+    if args.include_listed:
+        included_statuses.add("listed")
+    if args.include_excluded:
+        included_statuses.add("excluded")
 
-    signals = _configured_signals(args.signal_limit)
+    signals = _configured_signals(args.limit_per_signal)
     candidates, warnings = build_candidates(
         signals,
-        candidate_score=args.candidate_score,
+        candidate_score=args.minimum_candidate_score,
         metadata_batch_size=args.metadata_batch_size,
     )
 
