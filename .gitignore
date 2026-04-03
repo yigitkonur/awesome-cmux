@@ -1,2 +1,7 @@
 .DS_Store
 .worktrees/
+
+# Local curation tooling
+scripts/discover_candidates.py
+tests/test_discover_candidates.py
+docs/research/discover-candidates.md
