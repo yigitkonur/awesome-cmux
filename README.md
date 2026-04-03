@@ -1,6 +1,6 @@
 # Awesome cmux [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) ![Last updated](https://img.shields.io/github/last-commit/yigitkonur/awesome-cmux?label=last%20updated)
 
-> A curated, opinionated guide to the **[cmux](https://github.com/manaflow-ai/cmux)** ecosystem — the Ghostty-based macOS terminal built for AI coding agents. **120+ community projects** and growing. This list covers `manaflow-ai/cmux` only; for the Go connection multiplexer by soheilhy, see that repo directly.
+> A curated, opinionated guide to the **[cmux](https://github.com/manaflow-ai/cmux)** ecosystem — the Ghostty-based macOS terminal built for AI coding agents. **170+ community projects** and growing. This list covers `manaflow-ai/cmux` only; for the Go connection multiplexer by soheilhy, see that repo directly.
 
 cmux exposes three primitives that the entire plugin ecosystem builds on: `CMUX_WORKSPACE_ID`, `CMUX_SURFACE_ID`, and `CMUX_SOCKET_PATH`. Every project below uses at least one of them.
 
@@ -20,6 +20,7 @@ brew install --cask cmux-nightly  # nightly
 | Downloads | [Stable DMG](https://github.com/manaflow-ai/cmux/releases/latest/download/cmux-macos.dmg) · [Nightly DMG](https://github.com/manaflow-ai/cmux/releases/download/nightly/cmux-nightly-macos.dmg) |
 | Docs | [Getting Started](https://www.cmux.dev/docs/getting-started) · [Concepts](https://www.cmux.dev/docs/concepts) · [Configuration](https://www.cmux.dev/docs/configuration) · [Shortcuts](https://www.cmux.dev/docs/keyboard-shortcuts) |
 | API | [Reference](https://www.cmux.dev/docs/api) · [Browser](https://www.cmux.dev/docs/browser-automation) · [Notifications](https://www.cmux.dev/docs/notifications) |
+| Homebrew tap | [manaflow-ai/homebrew-cmux](https://github.com/manaflow-ai/homebrew-cmux) |
 | Blog | [Introducing cmux](https://www.cmux.dev/blog/introducing-cmux) · [Show HN](https://www.cmux.dev/blog/show-hn-launch) · [Zen of cmux](https://www.cmux.dev/blog/zen-of-cmux) |
 
 ---
@@ -96,6 +97,8 @@ cmux's vertical sidebar is the primary surface for agent feedback. Plugins write
 | [jaequery/cmux-diff](https://github.com/jaequery/cmux-diff) | Claude Code | Unlike status-pill plugins, adds a Cursor-style changes panel inside cmux's browser split with syntax-highlighted diffs and AI-generated commit messages as a persistent companion view | TypeScript |
 | [wrock/wezterm-agent-cards](https://github.com/wrock/wezterm-agent-cards) | Claude Code | Targets WezTerm users exclusively: render Claude Code sessions as stacked curses-based status cards, unlike cmux-socket plugins that require the cmux sidebar infrastructure | Python |
 | [Mirksen/cmux-toolkit](https://github.com/Mirksen/cmux-toolkit) | Claude Code | Skips status pills in favour of IDE ergonomics: auto-open edited files in a Vim subpane and toggle a broot file-browser sidebar, turning cmux into a lightweight editor environment | Shell |
+| [niaeee/cmux_skill](https://github.com/niaeee/cmux_skill) | Claude Code | Orchestrate 124 domain specialists via an 802-line skill file with 18 hooks, 28 scripts, and surface watcher detecting IDLE/ERROR/STALL states — the most granular Korean-language sidebar state machine for Claude Code | — |
+| [guanxm2617/feishu-openclaw-cmux](https://github.com/guanxm2617/feishu-openclaw-cmux) | Claude Code | Bridge cmux sidebar state bidirectionally to Feishu/Lark: poll notifications every 4 seconds, forward as rich Feishu cards, and trigger cmux commands from Feishu messages — the only enterprise-chat integration for sidebar pills | Shell · ★1 |
 | **Pi** | | | |
 | [HazAT/pi-config](https://github.com/HazAT/pi-config) | Pi | Covers the broadest Pi surface of any plugin: push model, tokens, active tool, and cost to the sidebar via a built-in multi-agent architecture with dedicated planning, scouting, and review subagents | TypeScript · ★228 |
 | [w-winter/dot314](https://github.com/w-winter/dot314) | Pi | Unlike single-script Pi plugins, ships as a curated extension collection that adds cost and token stats alongside sidebar state and workspace renaming — focuses on financial visibility other Pi plugins lack | TypeScript · ★77 |
@@ -105,6 +108,7 @@ cmux's vertical sidebar is the primary surface for agent feedback. Plugins write
 | [Attamusc/pi-cmux](https://github.com/Attamusc/pi-cmux) | Pi | Differentiates from other Pi plugins with render throttling to prevent sidebar flicker, dynamic progress estimation, and needs-attention alerts that auto-clear after ten seconds | TypeScript |
 | [sanurb/pi-cmux](https://github.com/sanurb/pi-cmux) | Pi | Focuses specifically on safe command execution: adds an explicit allowlist for workspace tools alongside focus-aware debounced macOS notifications, a security layer absent from other Pi plugins | TypeScript |
 | [simonjohansson/pi-cmux](https://github.com/simonjohansson/pi-cmux) | Pi | Prioritizes simplicity over breadth: expose a single configurable `cmux_cli` pass-through tool that forwards any argv to cmux, unlike multi-pill Pi plugins that hard-code their event mappings | TypeScript |
+| [Marmalade118/gsd-wmux](https://github.com/Marmalade118/gsd-wmux) | Pi | Drop-in replacement for GSD/Pi's `@gsd/cmux` module adding WezTerm as a second multiplexer backend with OSC 1337 user variables and Windows toast notifications — the only Pi plugin supporting dual multiplexer targets | TypeScript |
 | **OpenCode** | | | |
 | [kdcokenny/ocx](https://github.com/kdcokenny/ocx) | OpenCode | Adds portable configuration profile management on top of sidebar status — the only OpenCode plugin that lets you switch full environment profiles with flash triggers, making it production-proven at 520 stars | TypeScript · ★520 |
 | [0xCaso/opencode-cmux](https://github.com/0xCaso/opencode-cmux) | OpenCode | Unlike kdcokenny/ocx's profile focus, drives progress from todo completion counts and scopes unread log marks per workspace, giving per-project visibility across parallel OpenCode sessions | TypeScript · ★23 |
@@ -137,6 +141,7 @@ Long-running agent tasks need visible progress. cmux's sidebar supports progress
 | [taichiiwamoto-s/cmux-context](https://github.com/taichiiwamoto-s/cmux-context) | Claude Code | Repurpose the progress bar slot to show context window fill percentage with color-coded urgency bands, giving a resource-pressure signal instead of a task-completion estimate | Shell |
 | **Pi** | | | |
 | [Attamusc/pi-cmux](https://github.com/Attamusc/pi-cmux) | Pi | Estimate progress dynamically from Pi lifecycle events while enforcing render throttling so rapid tool bursts do not cause sidebar flicker | TypeScript |
+| [Marmalade118/gsd-wmux](https://github.com/Marmalade118/gsd-wmux) | Pi | Relay progress bar state from GSD/Pi to both cmux and WezTerm backends simultaneously via OSC 1337 user variables, enabling dual-multiplexer progress visibility from a single plugin | TypeScript |
 | **OpenCode** | | | |
 | [0xCaso/opencode-cmux](https://github.com/0xCaso/opencode-cmux) | OpenCode | Track todo-item resolution as the progress signal — the bar advances each time a checklist item resolves, giving concrete task-based completion rather than an inferred estimate | TypeScript · ★23 |
 | [Attamusc/opencode-cmux](https://github.com/Attamusc/opencode-cmux) | OpenCode | Combine tool-execution and file-edit counts into a blended progress estimate, capping update frequency with rate limiting to prevent sidebar jitter under fast OpenCode sessions | TypeScript |
@@ -188,6 +193,7 @@ When an agent finishes a task, hits an error, or needs permission, you want to k
 | [KyleJamesWalker/cc-cmux-plugin](https://github.com/KyleJamesWalker/cc-cmux-plugin) | Claude Code | Route notifications through `cmux notify` with auto-granted CLI permissions pre-configured; distinguishes itself by solving the permission-prompt problem so notifications fire silently on first run | — |
 | [rappdw/zen-term](https://github.com/rappdw/zen-term) | Claude Code | Forward OSC 777 rings from a remote DGX Spark to the local MacBook running cmux via Mosh; uniquely solves the remote-GPU-to-local-desktop notification gap — no other entry covers cross-host forwarding | Shell |
 | [eduwass/cru](https://github.com/eduwass/cru) | Claude Code | Fire lifecycle-phase notifications rendered with SF Symbols inside an agent team grid; uniquely integrates notification glyphs into a multi-agent grid view rather than standalone alerts | TypeScript |
+| [guanxm2617/feishu-openclaw-cmux](https://github.com/guanxm2617/feishu-openclaw-cmux) | Claude Code | Forward cmux notifications as rich Feishu/Lark cards every 4 seconds and accept Feishu-originated commands back into cmux — the only plugin routing desktop notifications through an enterprise messaging platform | Shell · ★1 |
 | **Pi** | | | |
 | [HazAT/pi-config](https://github.com/HazAT/pi-config) | Pi | Deliver notifications as part of a full multi-agent architecture with cost tracking and subagent coordination; the most feature-complete Pi config — notifications are one layer of a production-grade orchestration stack | TypeScript · ★228 |
 | [w-winter/dot314](https://github.com/w-winter/dot314) | Pi | Send attention notifications when Pi needs input, alongside sidebar state sync and token stats; uniquely surfaces token spend next to every alert so cost is visible at the moment attention is requested | TypeScript · ★77 |
@@ -196,6 +202,7 @@ When an agent finishes a task, hits an error, or needs permission, you want to k
 | [Attamusc/pi-cmux](https://github.com/Attamusc/pi-cmux) | Pi | Show needs-attention banners that auto-clear after ten seconds with render throttling; unlike joelhooks' persistent indicators, alerts self-dismiss to avoid cluttering the notification center | TypeScript |
 | [sanurb/pi-cmux](https://github.com/sanurb/pi-cmux) | Pi | Deliver focus-aware debounced macOS notifications alongside live sidebar status pills; uniquely suppresses rapid-fire alerts via debounce — the only Pi notifier with explicit debounce logic | TypeScript |
 | [sasha-computer/pi-cmux](https://github.com/sasha-computer/pi-cmux) | Pi | Provide context-aware notifications that summarize agent actions using LLM-callable tools for targeted alerts; uniquely lets the agent itself decide when and what to notify — no static hook triggers | TypeScript · ★14 |
+| [Marmalade118/gsd-wmux](https://github.com/Marmalade118/gsd-wmux) | Pi | Deliver notifications through both cmux and WezTerm backends simultaneously with Windows toast support via OSC 1337 — the only Pi notification plugin targeting dual multiplexer environments | TypeScript |
 | **OpenCode** | | | |
 | [kdcokenny/opencode-workspace](https://github.com/kdcokenny/opencode-workspace) | OpenCode | Bundle OS notifications inside a 16-component harness with planning, delegation, and worktree plugins; the most expansive OpenCode setup — notifications are one piece of a full orchestration suite | TypeScript · ★292 |
 | [kdcokenny/opencode-notify](https://github.com/kdcokenny/opencode-notify) | OpenCode | Deliver native OS notifications on completion, errors, and input-needed events with click-to-foreground, quiet hours, and custom sounds; the only standalone OpenCode notifier with quiet-hours scheduling and sound customization | TypeScript · ★127 |
@@ -209,6 +216,8 @@ When an agent finishes a task, hits an error, or needs permission, you want to k
 | **Multi / Other** | | | |
 | [aannoo/hcom](https://github.com/aannoo/hcom) | Multi | Deliver cross-agent notifications and file-edit collision detection across Claude Code, Gemini CLI, Codex, and OpenCode in a single Rust daemon; the only entry covering four agents simultaneously and the only one that catches edit collisions | Rust · ★185 |
 | [itsmaleen/cmux-companion](https://github.com/itsmaleen/cmux-companion) | — | Mirror cmux notifications to an iPhone via a Go bridge server over LAN WebSocket; uniquely extends notifications off the Mac entirely — no other entry targets a secondary device | Go / Swift |
+| [richardhowes/cmux-mobile](https://github.com/richardhowes/cmux-mobile) | — | Push APNs notifications from cmux to an iOS companion app over Tailscale with full workspace listing and ANSI terminal rendering — uniquely provides native mobile push as the delivery channel | TypeScript · ★1 |
+| [dd7200/pomo-tui](https://github.com/dd7200/pomo-tui) | — | Fire `cmux notify` on Pomodoro phase changes from a terminal TUI timer — the only standalone productivity tool using cmux notifications as its alert mechanism | Go |
 
 ### 5. Multi-Agent Orchestration
 
@@ -221,14 +230,22 @@ Running multiple agents in parallel is cmux's superpower. An orchestrator agent 
 | Repo | Agent | Description | Lang |
 |------|-------|-------------|------|
 | **Multi-agent** | | | |
+| [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Claude Code | Enable full autopilot mode with team pipelines, a tri-model advisor (Claude+Codex+Gemini), and tmux worker panes — the highest-starred orchestration framework by a wide margin | TypeScript · ★22727 |
 | [manaflow-ai/manaflow](https://github.com/manaflow-ai/manaflow) | Multi | Spawn Claude Code, Codex, Gemini, and other agents in parallel VS Code workspaces with git diff view and one-click PR creation — uniquely built around VS Code rather than terminal multiplexers | TypeScript · ★997 |
 | [HazAT/pi-interactive-subagents](https://github.com/HazAT/pi-interactive-subagents) | Multi | Spawn async sub-agents in dedicated panes across cmux, tmux, zellij, or WezTerm with a live TUI progress widget — the only framework with first-class multiplexer portability built in | TypeScript · ★251 |
 | [aannoo/hcom](https://github.com/aannoo/hcom) | Multi | Connect agents across terminals with cross-agent messaging, file-collision detection, and desktop notifications for Claude Code, Gemini, Codex, and OpenCode — focuses on safe concurrent file access rather than pane topology | Rust · ★185 |
+| [untra/operator](https://github.com/untra/operator) | Multi | Present a kanban TUI managing agents (Claude/Codex/Gemini) across projects with cmux as one of three multiplexer backends — uniquely treats cmux as a pluggable transport rather than a hard dependency | Rust · ★10 |
 | [rjwittams/flotilla](https://github.com/rjwittams/flotilla) | Multi | Correlate branches, PRs, issues, and terminal agents across repos into unified work items via a TUI dashboard — addresses multi-repo tracking rather than single-repo task dispatch | Rust |
+| [ttalkkag/cmux-agent](https://github.com/ttalkkag/cmux-agent) | Multi | Broker messages between controller, orchestrator, and worker cmux tabs with JSON artifact routing via file-watching and send_text — the only plugin using SQLite as a control plane for tab coordination | Python · ★5 |
 | **Claude Code** | | | |
 | [dagster-io/erk](https://github.com/dagster-io/erk) | Claude Code | Create implementation plans from AI, execute each in an isolated git worktree, and ship via automated PR submission — uniquely enforces full plan-execute-ship cycle with worktree isolation per task | Python · ★78 |
 | [hummer98/cmux-team](https://github.com/hummer98/cmux-team) | Claude Code | Run a task-queue daemon that spawns conductor and worker sub-agents in visible cmux split panes with a TUI dashboard — differs from erk by operating entirely in-terminal with no git-worktree isolation | TypeScript · ★9 |
 | [eduwass/cru](https://github.com/eduwass/cru) | Claude Code | Arrange agent team workers into a labeled grid across tmux, Ghostty, or cmux — focused purely on layout templating rather than task dispatch or lifecycle management | TypeScript |
+| [Islanders-Treasure0969/claude-pilot](https://github.com/Islanders-Treasure0969/claude-pilot) | Claude Code | Provide a browser-based dev cockpit with declarative workflow.yml gates, substep tracking, and Autopilot via cmux `send` — uniquely exposes a Ctrl+K command palette for manual override during automated runs | JavaScript · ★2 |
+| [alevental/cccp](https://github.com/alevental/cccp) | Claude Code | Execute YAML-based deterministic pipelines with Plan-Generate-Evaluate loops, a TypeScript state machine, cmux split-pane dashboard, and MCP approval gates — enforces repeatable multi-step workflows | TypeScript |
+| [Ridgeio/swarm](https://github.com/Ridgeio/swarm) | Claude Code | Coordinate agents across terminals via cmux `send` with `/join-swarm` registration, SQLite persistence, and UserPromptSubmit hooks — focused on persistent swarm awareness rather than ephemeral pane dispatch | TypeScript |
+| [mangledmonkey/devmux](https://github.com/mangledmonkey/devmux) | Claude Code | Implement a master-worker pattern using worktrees, cmux workspaces, and Agent Teams (lead+tester+reviewer+security) with deterministic port allocation — uniquely assigns fixed ports per agent role | Shell |
+| [TimoKruth/cmux-t3code](https://github.com/TimoKruth/cmux-t3code) | Multi | Embed t3code AI coding GUI as per-workspace chat panels via sidecar Node.js servers on unique ports — uniquely grafts an external coding GUI into each cmux workspace | — |
 | **Pi** | | | |
 | [burggraf/pi-teams](https://github.com/burggraf/pi-teams) | Pi | Turn one Pi agent into a coordinated team with specialist teammates, shared task board, direct messaging, and plan-approval gates — Pi-native alternative to general multi-agent frameworks | TypeScript · ★55 |
 | [bjacobso/pimux](https://github.com/bjacobso/pimux) | Pi | Manage parallel Pi agents via an Effect service with per-task workspaces, sidebar state machine, and diff review workflow — adds typed Effect-based orchestration on top of Pi's native agent model | TypeScript |
@@ -258,6 +275,16 @@ Running multiple agents in parallel is cmux's superpower. An orchestrator agent 
 | [alaasdk/cmux-ctl](https://github.com/alaasdk/cmux-ctl) | Claude Code | Display a real-time TUI dashboard of all active workspaces with keyboard-driven agent launching and direct input — control-plane view complementing skills that focus on task dispatch | Python |
 | [jeremyeder/sisi-cmux](https://github.com/jeremyeder/sisi-cmux) | Claude Code | Auto-discover projects and build tmux workspaces with one-key Claude Code integration and checkpoint save/restore — project-bootstrap companion rather than a runtime orchestration skill | TypeScript |
 | [halindrome/cmux-tmux-mapping-for-cc](https://github.com/halindrome/cmux-tmux-mapping-for-cc) | Claude Code | Detect tmux vs cmux at runtime and transparently route all panel operations through the correct backend — enables skills written for one multiplexer to work unchanged on the other | Shell |
+| [mikasalikh/cmux-wf](https://github.com/mikasalikh/cmux-wf) | Claude Code | Bundle a PM orchestrator script with SKILL.md that reads PRDs and distributes work to agents via the cmux socket API — the only skill pairing project management with cmux dispatch | Shell · ★5 |
+| [sdgranger/will-public-claude](https://github.com/sdgranger/will-public-claude) | Claude Code | Ship a plugin marketplace package with five skills: cmux detection, cmux-browser, cmux-parallel, cmux-run, and skillify (auto-generate SKILL.md) — the only multi-skill marketplace bundle | Shell · ★4 |
+| [ogallotti/cmux-tmux-shim](https://github.com/ogallotti/cmux-tmux-shim) | Claude Code | Translate tmux commands to cmux equivalents, enabling `--teammate-mode tmux` (Agent Teams) inside cmux by mapping pane IDs to surface IDs — solves the tmux-compatibility gap for agent team mode | Shell |
+| [KyubumShin/cmux-skills](https://github.com/KyubumShin/cmux-skills) | Claude Code | Provide three skills: `/cmux-control` for remote session control with 8-state detection, `/cmux-get` for context import, and `/cmux-md-preview` for interactive Markdown checklists — granular per-feature skill separation | JavaScript |
+| [take0x/cmux-skills](https://github.com/take0x/cmux-skills) | Claude Code | Offer two skills: self-referential cmux docs lookup (live `cmux -h` + scraped cmux.com) and `/pane` reader for other terminals — the only skill that dynamically scrapes upstream documentation at runtime | Shell |
+| [niaeee/cmux_skill](https://github.com/niaeee/cmux_skill) | Claude Code | Orchestrate 124 domain specialists via an 802-line Korean skill with 18 hooks, 28 scripts, and surface watcher detecting IDLE/ERROR/STALL — the most exhaustive single-file orchestration skill by line count | — |
+| [H-Noguchi-josys/cmux-split-plugin](https://github.com/H-Noguchi-josys/cmux-split-plugin) | Claude Code | Provide a `/split` skill that forks current conversation into a new cmux pane via `cmux new-split right` + `claude -c` — minimal single-command conversation forking | Shell |
+| **Multi-agent** | | | |
+| [wangyuxinwhy/agent-skills](https://github.com/wangyuxinwhy/agent-skills) | Multi | Deliver framework-agnostic skills symlinked into Claude Code, Codex, Coco/Trae, or OpenCode with cmux orchestration and Feishu/Lark CLI integration — the only skill set targeting five agent runtimes | — |
+| [basedcorp99/claude-worktree-zsh](https://github.com/basedcorp99/claude-worktree-zsh) | Multi | Provide Zsh helpers launching 5 agents (Claude/Codex/Droid/OpenCode/Pi) in worktrees with `cwl` dashboard and `cwm` merge-back — the widest agent coverage of any worktree helper | Shell |
 | **Pi** | | | |
 | [HazAT/pi-config](https://github.com/HazAT/pi-config) | Pi | Configure a multi-agent architecture with cmux-visible subagents for planning, scouting, coding, and reviewing — the canonical reference for role-specialized Pi agent teams | TypeScript · ★228 |
 | [w-winter/dot314](https://github.com/w-winter/dot314) | Pi | Provide branch-out workflows, a command center, and multi-repo project navigation for Pi agents — extends Pi's scope to cross-repo orchestration that single-repo skills cannot address | TypeScript · ★77 |
@@ -289,6 +316,13 @@ cmux embeds a WebKit browser pane that agents can control via CLI. Plugins use `
 | [mikecfisher/cmux-skill](https://github.com/mikecfisher/cmux-skill) | Claude Code | Cover browser automation as part of a broad CLI taxonomy that uniquely documents `capture-pane` internals and `CMUX_SOCKET_PASSWORD` authentication — more reference than tutorial | Markdown |
 | [monzou/mo-cmux](https://github.com/monzou/mo-cmux) | Claude Code | Preview Markdown files in a browser split with live-reload on save and fuzzy filename matching — focused narrowly on Markdown rendering rather than general browser control | Shell |
 | [hoonkim/cmux-skills-plugin](https://github.com/hoonkim/cmux-skills-plugin) | Claude Code | Enable browser automation and pane control via `cmux tree`, `read-screen`, and `send`, with all documentation in Korean — distinct by emphasizing pane-tree introspection commands not covered in English-language skills | Markdown |
+| [sdgranger/will-public-claude](https://github.com/sdgranger/will-public-claude) | Claude Code | Include a cmux-browser skill in a 5-skill marketplace package that also covers parallel execution and auto-skill generation — distinct from single-purpose browser plugins by bundling browser alongside orchestration | Shell · ★4 |
+| [Islanders-Treasure0969/claude-pilot](https://github.com/Islanders-Treasure0969/claude-pilot) | Claude Code | Render a browser-based dev cockpit with declarative workflow gates and Autopilot via cmux `send` — uniquely provides a visual dashboard for monitoring multi-step browser-driven agent workflows | JavaScript · ★2 |
+| [alankyshum/semantic-diff](https://github.com/alankyshum/semantic-diff) | Claude Code | Display a terminal TUI diff viewer that uses AI to semantically group git hunks with SIGUSR1 auto-refresh from Claude Code edits and Mermaid rendering in Ghostty/cmux — semantic grouping distinguishes it from line-level diff tools | Rust · ★1 |
+| [RyoHirota68/difit-cmux](https://github.com/RyoHirota68/difit-cmux) | Claude Code | Auto-reload the difit web diff viewer in a cmux browser pane triggered by Claude Code rules after file changes with per-workspace port isolation — purpose-built for continuous visual diff monitoring | Shell |
+| [KyubumShin/cmux-skills](https://github.com/KyubumShin/cmux-skills) | Claude Code | Expose `/cmux-md-preview` for interactive Markdown checklists in a browser pane alongside remote session control and context import skills — unique in treating the browser pane as an interactive checklist surface | JavaScript |
+| [EverybodyBusiness/cmux-browser-first](https://github.com/EverybodyBusiness/cmux-browser-first) | Claude Code | Force cmux browser tools to always be prioritized via three slash commands (`/browse`, `/browse-check`, `/browse-compare`) — the only plugin that elevates browser to the default tool choice in Korean | — |
+| [TimoKruth/cmux-t3code](https://github.com/TimoKruth/cmux-t3code) | Multi | Embed a t3code AI coding GUI in cmux browser panes via sidecar Node.js servers on unique ports — uniquely grafts an external coding interface into the browser surface | — |
 | **Pi** | | | |
 | [sasha-computer/pi-cmux](https://github.com/sasha-computer/pi-cmux) | Pi | Give Pi LLM-callable browser automation tools alongside sidebar notification pills and context-aware inline notifications — the most starred Pi browser plugin and the only one with a native sidebar pill UI | TypeScript · ★14 |
 | [sanurb/pi-cmux-browser](https://github.com/sanurb/pi-cmux-browser) | Pi | Provide Pi with typed browser automation actions (click, fill, screenshot, snapshot) plus a dedicated spawnable web-dev subagent — unique in offering a purpose-built subagent for frontend development tasks | TypeScript |
@@ -322,6 +356,13 @@ Git worktrees give each agent an isolated copy of the repository on a separate b
 | [baixianger/claude-orchestration-in-cmux](https://github.com/baixianger/claude-orchestration-in-cmux) | Claude Code | Coordinate multi-agent parallel work by delegating subtasks to dedicated worktree panes and driving merge cycles through pane-level Claude Code invocations | Markdown |
 | [Stealinglight/cmux-claude-code-skill](https://github.com/Stealinglight/cmux-claude-code-skill) | Claude Code | Teach Claude Code itself to manage worktree sessions via skills, bundling browser-open, sidebar-attach, and system-notification hooks alongside the worktree create/destroy primitives | Shell |
 | [wwaIII/proj](https://github.com/wwaIII/proj) | Claude Code | Launch named cmux workspaces through a Rust TUI project picker that marks sessions running Claude Code with `[CC]` activity badges for at-a-glance fleet visibility | Rust |
+| [mangledmonkey/devmux](https://github.com/mangledmonkey/devmux) | Claude Code | Create per-agent worktrees inside cmux workspaces using a master-worker pattern with Agent Teams (lead+tester+reviewer+security) and deterministic port allocation per branch | Shell |
+| [mateusduraes/ramo](https://github.com/mateusduraes/ramo) | Claude Code | Run `ramo new <branch>` to create a worktree, execute setup commands, copy env files, and open a cmux workspace — declarative `ramo.json` config replaces manual multi-step worktree bootstrapping | Go |
+| [theodaguier/wt](https://github.com/theodaguier/wt) | Claude Code | Create worktrees from GitHub and Linear issues: `wt gh <issue>` fetches the title, creates a branch, and opens a cmux tab — fzf picker for selecting from open issues | Shell |
+| [morrisclay/ws](https://github.com/morrisclay/ws) | Claude Code | Open or focus cmux workspaces with `ws <name>`, scaffold new ones with CLAUDE.md and permissions via `ws init`, and integrate Flox envs plus 1Password CLI secrets per workspace | Shell |
+| [H-Noguchi-josys/cmux-split-plugin](https://github.com/H-Noguchi-josys/cmux-split-plugin) | Claude Code | Fork the current conversation into a new cmux pane via `/split` skill using `cmux new-split right` + `claude -c` — minimal single-command conversation branching for parallel exploration | Shell |
+| [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Claude Code | Manage tmux worker panes as part of a full autopilot framework with team pipelines and a tri-model advisor — worktree-like isolation via dedicated tmux panes rather than git worktrees | TypeScript · ★22727 |
+| [TimoKruth/cmux-t3code](https://github.com/TimoKruth/cmux-t3code) | Multi | Embed per-workspace t3code AI coding GUI via sidecar Node.js servers, creating an isolated development environment per cmux workspace with unique port assignments | — |
 | **Pi** | | | |
 | [bjacobso/pimux](https://github.com/bjacobso/pimux) | Pi | Give each parallel Pi agent its own isolated worktree and dedicated workspace pane, with a sidebar showing live diff status and a structured review workflow before merging | TypeScript |
 | [javiermolinar/pi-cmux](https://github.com/javiermolinar/pi-cmux) | Pi | Extend Pi sessions with git worktree branching that passes handoff context between agents, plus 12+ slash commands covering pane splits and zoxide-powered directory jumps | TypeScript · ★6 |
@@ -331,6 +372,9 @@ Git worktrees give each agent an isolated copy of the repository on a separate b
 | **Multi / Other** | | | |
 | [eunjae-lee/cmux-worktree](https://github.com/eunjae-lee/cmux-worktree) | — | Drive worktree creation from a declarative YAML workspace definition, supporting custom pre/post workflows, configurable split layouts, and per-pane isolated browser storage | TypeScript |
 | [rjwittams/flotilla](https://github.com/rjwittams/flotilla) | Multi | Correlate branches, open PRs, and issues across multiple repos simultaneously, with agent hook integration that triggers worktree setup and teardown from CI/PR events | Rust |
+| [basedcorp99/claude-worktree-zsh](https://github.com/basedcorp99/claude-worktree-zsh) | Multi | Provide Zsh helpers launching 5 agents (Claude/Codex/Droid/OpenCode/Pi) in worktrees with `cwl` dashboard and `cwm` merge-back — the widest agent coverage of any worktree shell helper | Shell |
+| [ehardesty/fish_git_worktree](https://github.com/ehardesty/fish_git_worktree) | — | Supply Fish shell worktree functions (`wt-create/list/remove`) with cmux workspace integration — the only Fish-specific worktree helper in the list | Fish |
+| [LattyCat/cmux-workspace](https://github.com/LattyCat/cmux-workspace) | Multi | Create a Japanese 4-pane layout: yazi + glow/watchexec Markdown preview + lazygit + AI terminal with symlinks to the cmux command palette — opinionated development cockpit for Japanese-language workflows | Shell |
 
 ### 8. Monitoring & Session Restore
 
@@ -352,6 +396,12 @@ Agents can run for hours. When cmux restarts, crashes, or you close the lid, you
 | [bocktae80/cmux-pilot](https://github.com/bocktae80/cmux-pilot) | Claude Code | Resume all workspace sessions after a system restart by maintaining a persistent workspace-to-session mapping — single-command bulk replay distinct from per-session hook approaches | Shell |
 | [wrock/wezterm-agent-cards](https://github.com/wrock/wezterm-agent-cards) | Claude Code | Display real-time color-coded status cards for Claude Code sessions in a WezTerm sidebar — WezTerm-native alternative to tmux sidebar monitors | Python |
 | [theforager/cmux](https://github.com/theforager/cmux) | Claude Code | Provide an interactive tmux session selector with real-time status indicators tuned for low-bandwidth mobile SSH connections — prioritizes minimal rendering over rich dashboards | Shell |
+| [Islanders-Treasure0969/claude-pilot](https://github.com/Islanders-Treasure0969/claude-pilot) | Claude Code | Monitor multi-step agent workflows via a browser-based dev cockpit with substep tracking and declarative workflow.yml gates — distinct from TUI dashboards by rendering status in a web interface | JavaScript · ★2 |
+| [KyubumShin/cmux-skills](https://github.com/KyubumShin/cmux-skills) | Claude Code | Detect 8 session states via `/cmux-control` for remote monitoring and context import via `/cmux-get` — granular state machine monitoring at the skill level rather than the daemon level | JavaScript |
+| [take0x/cmux-skills](https://github.com/take0x/cmux-skills) | Claude Code | Read other terminals via `/pane` and look up live cmux documentation — provides session introspection by scraping pane contents rather than socket polling | Shell |
+| [niaeee/cmux_skill](https://github.com/niaeee/cmux_skill) | Claude Code | Watch surfaces for IDLE/ERROR/STALL states across 124 domain specialists via 18 hooks and 28 scripts — the most granular Korean-language monitoring skill by specialist count | — |
+| [JacianLiu/cmux-claude-session](https://github.com/JacianLiu/cmux-claude-session) | Claude Code | Capture and restore sessions using stable layout coordinates instead of volatile surface UUIDs with a layout-change hook for live remapping — solves the UUID-instability problem that breaks other restore tools | Shell |
+| [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | Claude Code | Monitor a tri-model advisor (Claude+Codex+Gemini) and team pipeline from tmux worker panes — surfaces cross-model orchestration state that single-agent monitors cannot capture | TypeScript · ★22727 |
 | **Multi / Other** | | | |
 | [rjwittams/flotilla](https://github.com/rjwittams/flotilla) | Multi | Correlate agents, branches, and PRs across multiple repos into unified work items via a TUI dashboard — cross-repo aggregation makes it distinct from single-workspace monitoring tools | Rust |
 | [owizdom/context-brdige-for-cmux](https://github.com/owizdom/context-brdige-for-cmux) | Multi | Poll panes from any agent, extract structured context, persist snapshots to SQLite, and auto-inject compressed handoff briefs into new sessions — persistence layer differentiates it from in-memory restore tools | Go |
@@ -371,6 +421,10 @@ Sometimes you need to check on your agents from another room — or another devi
 | [itsmaleen/cmux-companion](https://github.com/itsmaleen/cmux-companion) | — | Push cmux notifications to an iPhone app and cycle workspaces with the volume buttons, voice commands, or landscape-optimised tap targets | Go / Swift |
 | [rappdw/zen-term](https://github.com/rappdw/zen-term) | Claude Code | Connect a local MacBook to a remote DGX Spark over Mosh, maintaining session continuity across flaky links with OSC 777 notification rings for agent events | Shell |
 | [theforager/cmux](https://github.com/theforager/cmux) | Claude Code | Present a compact, mobile-friendly tmux session selector with narrow columns tuned for Terminus on iOS, so agents can be checked and switched from a phone | Shell |
+| [richardhowes/cmux-mobile](https://github.com/richardhowes/cmux-mobile) | — | Provide an iOS companion app (React Native/Expo) over Tailscale with full workspace listing, ANSI terminal rendering, keyboard shortcuts, and APNs push notifications — the most feature-complete mobile client | TypeScript · ★1 |
+| [guanxm2617/feishu-openclaw-cmux](https://github.com/guanxm2617/feishu-openclaw-cmux) | Claude Code | Bridge cmux bidirectionally to Feishu/Lark: poll notifications every 4 seconds, forward as rich Feishu cards, and accept commands back from Feishu messages — enterprise-chat remote access channel | Shell · ★1 |
+| [elitecoder/cmux-bridge](https://github.com/elitecoder/cmux-bridge) | — | Connect cmux to Slack with `read`/`send`/`key`/`watch` commands in channels, posting watched surfaces to threads with LaunchAgent auto-start — the only Slack integration for cmux remote control | TypeScript |
+| [erikhazzard/cmux-remote](https://github.com/erikhazzard/cmux-remote) | — | Self-host a remote mirror via local bridge + Cloudflare tunnel with a phone web app over WebSocket for terminal preview and workspace switching — zero-config remote access via tunnel | TypeScript |
 
 ---
 
@@ -399,6 +453,14 @@ The right layout turns cmux from a terminal into a development cockpit. Three-pa
 | [chrisliu298/ghostty-config](https://github.com/chrisliu298/ghostty-config) | — | Configure Ghostty with a GitHub Dark theme, Berkeley Mono 18pt, 128 MiB scrollback buffer, and cmux-ready key bindings tuned for long agent sessions | — |
 | [danneu/danterm](https://github.com/danneu/danterm) | — | Build a macOS terminal on libghostty with vertical tab strips, split panes, collapsible tab groups, and JSON-serialised layout restore across restarts | Swift |
 | [davis7dotsh/my-term](https://github.com/davis7dotsh/my-term) | — | Prototype a native macOS terminal emulator with an Arc-style persistent sidebar and long-lived SwiftTerm sessions designed to host cmux workspaces indefinitely | Swift |
+| [Seungwoo321/cmux-setup](https://github.com/Seungwoo321/cmux-setup) | Claude Code | Register projects and group them into presets, then launch all as cmux workspaces with `cmux-setup run <preset>` — the only Korean-language project registry and preset launcher for cmux | TypeScript |
+| [Marmalade118/gsd-wmux](https://github.com/Marmalade118/gsd-wmux) | Pi | Configure GSD/Pi with dual multiplexer support (cmux + WezTerm) via OSC 1337 user variables and Windows toast notifications — extends layout config to non-macOS environments | TypeScript |
+| [LattyCat/cmux-workspace](https://github.com/LattyCat/cmux-workspace) | Multi | Arrange a Japanese 4-pane layout: yazi + glow/watchexec Markdown preview + lazygit + AI terminal, symlinked into cmux command palette — opinionated layout preset for Japanese workflows | Shell |
+| [morrisclay/ws](https://github.com/morrisclay/ws) | Claude Code | Open or focus workspaces with `ws <name>`, scaffold with CLAUDE.md and permissions via `ws init`, and integrate Flox envs plus 1Password CLI secrets — combines workspace management with secrets injection | Shell |
+| [richardhowes/cmux-jump](https://github.com/richardhowes/cmux-jump) | — | Resolve partial directory names via zoxide frecency, check cmux workspaces with 4-tier fuzzy matching, and switch or create with `j <partial>` — the only zoxide-integrated workspace switcher with 45 tests | Shell |
+| [earchibald/cmux-layout](https://github.com/earchibald/cmux-layout) | — | Apply declarative layout DSL to live cmux via socket JSON-RPC with a `describe` command that reads back live topology as a reusable descriptor — bidirectional layout definition and introspection | Swift |
+| [madlouse/homebrew-ghostty](https://github.com/madlouse/homebrew-ghostty) | — | Install a full AI stack (cmux + Ghostty + Zed + Starship + JetBrainsMono) via a single Homebrew formula with idempotent re-runs and dry-run mode — one-command developer environment bootstrap | Ruby |
+| [miraoto/cmux-cheatsheet](https://github.com/miraoto/cmux-cheatsheet) | — | Provide `c-help` CLI: offline searchable cheatsheet for all cmux keyboard shortcuts, CLI commands, sidebar APIs, browser automation, and env vars in English and Japanese | Shell |
 
 ---
 
@@ -422,6 +484,8 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | [eduwass/cru](https://github.com/eduwass/cru) | `orchestrate` `sidebar` `layout` | Arrange agent team workers into grid layouts with lifecycle phases, SF Symbols, and progress-watcher | TypeScript |
 | [azu/cmux-hub](https://github.com/azu/cmux-hub) | `browser` `sidebar` `monitor` | Provide a browser-based diff viewer with syntax highlighting, review comments, and GitHub CI status | TypeScript · ★15 |
 | [jaequery/cmux-diff](https://github.com/jaequery/cmux-diff) | `browser` `sidebar` | Show syntax-highlighted diffs in a browser split with AI-generated commit messages | TypeScript |
+| [niaeee/cmux_skill](https://github.com/niaeee/cmux_skill) | `sidebar` `orchestrate` `monitor` | Orchestrate 124 domain specialists via 18 hooks and surface watcher for IDLE/ERROR/STALL detection, in Korean | — |
+| [guanxm2617/feishu-openclaw-cmux](https://github.com/guanxm2617/feishu-openclaw-cmux) | `sidebar` `notify` `remote` | Bridge cmux sidebar state bidirectionally to Feishu/Lark with rich cards and command routing | Shell · ★1 |
 
 **Skills** (reference docs that teach Claude Code how to use cmux)
 
@@ -441,6 +505,15 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | [baixianger/claude-orchestration-in-cmux](https://github.com/baixianger/claude-orchestration-in-cmux) | `orchestrate` `worktree` `skill` | Coordinate parallel work via pane delegation, worktree creation, and merge cycle management | Markdown |
 | [ygrec-app/supreme-leader-skill](https://github.com/ygrec-app/supreme-leader-skill) | `orchestrate` `monitor` `skill` | Plan subtasks, spawn 2-8 workers, monitor via polling, review deliverables, and dispatch fixes | Markdown |
 | [ygrec-app/offload-task-skill](https://github.com/ygrec-app/offload-task-skill) | `orchestrate` `skill` | Offload a task to a split pane with an autonomous worker to preserve main session context | Markdown |
+| [mikasalikh/cmux-wf](https://github.com/mikasalikh/cmux-wf) | `orchestrate` `skill` | Bundle a PM orchestrator script with SKILL.md that reads PRDs and distributes work via cmux socket API | Shell · ★5 |
+| [sdgranger/will-public-claude](https://github.com/sdgranger/will-public-claude) | `browser` `orchestrate` `skill` | Ship a 5-skill marketplace package: cmux detection, cmux-browser, cmux-parallel, cmux-run, and skillify | Shell · ★4 |
+| [ogallotti/cmux-tmux-shim](https://github.com/ogallotti/cmux-tmux-shim) | `orchestrate` `skill` | Translate tmux commands to cmux equivalents for `--teammate-mode tmux` Agent Teams inside cmux | Shell |
+| [KyubumShin/cmux-skills](https://github.com/KyubumShin/cmux-skills) | `browser` `monitor` `skill` | Provide `/cmux-control` (8-state detection), `/cmux-get` (context import), and `/cmux-md-preview` (Markdown checklist) | JavaScript |
+| [take0x/cmux-skills](https://github.com/take0x/cmux-skills) | `monitor` `skill` | Offer self-referential cmux docs lookup (live `cmux -h` + scraped docs) and `/pane` reader for other terminals | Shell |
+| [H-Noguchi-josys/cmux-split-plugin](https://github.com/H-Noguchi-josys/cmux-split-plugin) | `orchestrate` `skill` | Fork current conversation into a new cmux pane via `/split` using `cmux new-split right` + `claude -c` | Shell |
+| [EverybodyBusiness/cmux-browser-first](https://github.com/EverybodyBusiness/cmux-browser-first) | `browser` `skill` | Force cmux browser tools to be prioritized via `/browse`, `/browse-check`, `/browse-compare`, in Korean | — |
+| [alankyshum/semantic-diff](https://github.com/alankyshum/semantic-diff) | `browser` `skill` | Display AI-grouped semantic diffs in a TUI with SIGUSR1 auto-refresh and Mermaid rendering in cmux | Rust · ★1 |
+| [RyoHirota68/difit-cmux](https://github.com/RyoHirota68/difit-cmux) | `browser` `skill` | Auto-reload difit web diff viewer in cmux browser pane on file changes with per-workspace port isolation | Shell |
 
 **Orchestration & Worktrees**
 
@@ -454,6 +527,14 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | [bhandeland/fleet](https://github.com/bhandeland/fleet) | `worktree` `sidebar` `orchestrate` `layout` | Manage worktree lifecycles with agent team spawning and one-command merge-back | Shell |
 | [tasuku43/kra](https://github.com/tasuku43/kra) | `worktree` `orchestrate` | Map tickets to cmux workspaces, auto-creating or removing sessions as tasks change | Go |
 | [Kaldy14/clui](https://github.com/Kaldy14/clui) | `layout` `worktree` | Wrap Claude Code in Electron with per-thread worktrees, resume support, and LRU hibernation | TypeScript |
+| [Yeachan-Heo/oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode) | `orchestrate` `worktree` `monitor` | Enable full autopilot with team pipelines, tri-model advisor (Claude+Codex+Gemini), and tmux worker panes | TypeScript · ★22727 |
+| [Islanders-Treasure0969/claude-pilot](https://github.com/Islanders-Treasure0969/claude-pilot) | `orchestrate` `browser` `monitor` | Provide a browser-based dev cockpit with workflow.yml gates, substep tracking, and Autopilot via cmux `send` | JavaScript · ★2 |
+| [alevental/cccp](https://github.com/alevental/cccp) | `orchestrate` `layout` | Execute YAML-based deterministic pipelines with Plan-Generate-Evaluate loops and cmux split-pane dashboard | TypeScript |
+| [Ridgeio/swarm](https://github.com/Ridgeio/swarm) | `orchestrate` `monitor` | Coordinate agents across terminals via cmux `send` with `/join-swarm` and SQLite persistence | TypeScript |
+| [mangledmonkey/devmux](https://github.com/mangledmonkey/devmux) | `orchestrate` `worktree` `layout` | Implement master-worker pattern with Agent Teams and deterministic port allocation per worktree | Shell |
+| [mateusduraes/ramo](https://github.com/mateusduraes/ramo) | `worktree` `config` | Create worktrees, run setup commands, copy env files, and open cmux workspaces via `ramo.json` config | Go |
+| [theodaguier/wt](https://github.com/theodaguier/wt) | `worktree` `layout` | Create worktrees from GitHub/Linear issues with fzf picker and auto-open cmux tabs | Shell |
+| [morrisclay/ws](https://github.com/morrisclay/ws) | `worktree` `config` `layout` | Open/focus cmux workspaces with `ws <name>`, scaffold with CLAUDE.md, integrate Flox envs + 1Password secrets | Shell |
 
 **Session Restore & Monitoring**
 
@@ -466,6 +547,7 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | [maedana/crmux](https://github.com/maedana/crmux) | `monitor` `sidebar` `layout` | Show live status for all Claude Code sessions in a tmux sidebar with vim-like navigation | Rust · ★20 |
 | [wrock/wezterm-agent-cards](https://github.com/wrock/wezterm-agent-cards) | `sidebar` `monitor` | Display sessions as stacked status cards in WezTerm with real-time state tracking | Python |
 | [theforager/cmux](https://github.com/theforager/cmux) | `layout` `monitor` | Provide an interactive tmux session selector with live status, optimized for mobile SSH | Shell |
+| [JacianLiu/cmux-claude-session](https://github.com/JacianLiu/cmux-claude-session) | `monitor` `layout` | Capture and restore sessions using stable layout coordinates instead of volatile surface UUIDs | Shell |
 
 **Layout & Config**
 
@@ -480,6 +562,7 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | [wwaIII/proj](https://github.com/wwaIII/proj) | `layout` `config` | Launch named cmux workspaces from a TUI project picker with activity badges | Rust |
 | [budah1987/homebrew-tools](https://github.com/budah1987/homebrew-tools) | `layout` `config` | Install the workspace launcher via Homebrew with dependency management | Ruby |
 | [jeremyeder/sisi-cmux](https://github.com/jeremyeder/sisi-cmux) | `layout` `orchestrate` | Auto-discover projects and build tmux workspaces with Claude Code integration and checkpoint save | TypeScript |
+| [Seungwoo321/cmux-setup](https://github.com/Seungwoo321/cmux-setup) | `layout` `config` | Register projects into presets and launch all as cmux workspaces with `cmux-setup run`, in Korean | TypeScript |
 
 ### Pi
 
@@ -501,6 +584,7 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | [sanurb/pi-cmux-browser](https://github.com/sanurb/pi-cmux-browser) | `browser` | Give Pi typed browser automation tools with click, fill, screenshot, and a spawnable web-dev subagent | TypeScript |
 | [sanurb/pi-cmux-workflows](https://github.com/sanurb/pi-cmux-workflows) | `layout` `browser` `orchestrate` | Add slash commands for splits, handoffs, and ringi code reviews in cmux browser panes | TypeScript |
 | [mastertyko/pi-cmux-preview](https://github.com/mastertyko/pi-cmux-preview) | `browser` | Render assistant Markdown as styled HTML in a browser pane with screenshot capture | TypeScript |
+| [Marmalade118/gsd-wmux](https://github.com/Marmalade118/gsd-wmux) | `sidebar` `progress` `notify` | Drop-in GSD/Pi replacement adding WezTerm as second multiplexer backend with OSC 1337 and Windows toast | TypeScript |
 
 ### OpenCode
 
@@ -542,6 +626,12 @@ These projects work across multiple agents or are agent-agnostic.
 | [owizdom/context-brdige-for-cmux](https://github.com/owizdom/context-brdige-for-cmux) | `monitor` `orchestrate` | Poll panes, persist context to SQLite, and auto-inject handoff briefs for cross-agent memory | Go |
 | [rjwittams/flotilla](https://github.com/rjwittams/flotilla) | `worktree` `orchestrate` `monitor` | Correlate branches, PRs, and terminal agents across repos via a TUI dashboard | Rust |
 | [meengi07/cmux-agent-observer-skill](https://github.com/meengi07/cmux-agent-observer-skill) | `orchestrate` `layout` `monitor` | Launch visible worker panes for Codex/OpenCode with progress tracking and handoff notes | Shell |
+| [untra/operator](https://github.com/untra/operator) | `orchestrate` `layout` | Present a kanban TUI managing agents across projects with cmux as a pluggable multiplexer backend | Rust · ★10 |
+| [ttalkkag/cmux-agent](https://github.com/ttalkkag/cmux-agent) | `orchestrate` `monitor` | Broker messages between controller/orchestrator/worker cmux tabs with SQLite control plane and JSON artifacts | Python · ★5 |
+| [wangyuxinwhy/agent-skills](https://github.com/wangyuxinwhy/agent-skills) | `orchestrate` `skill` | Deliver framework-agnostic skills symlinked into 5 agent runtimes with cmux orchestration and Feishu CLI | — |
+| [basedcorp99/claude-worktree-zsh](https://github.com/basedcorp99/claude-worktree-zsh) | `worktree` `orchestrate` | Launch 5 agents (Claude/Codex/Droid/OpenCode/Pi) in worktrees with `cwl` dashboard and `cwm` merge-back | Shell |
+| [TimoKruth/cmux-t3code](https://github.com/TimoKruth/cmux-t3code) | `browser` `layout` `worktree` | Embed t3code AI coding GUI as per-workspace chat panels via sidecar Node.js servers on unique ports | — |
+| [LattyCat/cmux-workspace](https://github.com/LattyCat/cmux-workspace) | `layout` `config` | Create a Japanese 4-pane layout with yazi + Markdown preview + lazygit + AI terminal, symlinked to command palette | Shell |
 
 ---
 
@@ -555,6 +645,9 @@ These projects work across multiple agents or are agent-agnostic.
 | [TRINITXX/cmux-windows](https://github.com/TRINITXX/cmux-windows) | Fork mkurman's implementation adding Claude Code hooks, Zen mode, Dracula/One Dark themes, and command log replay | C# |
 | [aasm3535/wmux](https://github.com/aasm3535/wmux) | Build a WinUI 3 port with xterm.js, vertical sidebar, split panes, OSC notifications, WebView2 browser, and native Mica backdrop | C# |
 | [shogotomita/cmux-win](https://github.com/shogotomita/cmux-win) | Build a WPF/ConPTY terminal with workspace splitting, sidebar pills, Claude Code hooks, and a 28-method named-pipe IPC server | C# |
+| [amirlehmam/wmux](https://github.com/amirlehmam/wmux) | Build an Electron + xterm.js + ConPTY terminal with CDP proxy for browser integration, auto-injected Claude Code hooks, and a named-pipe API compatible with cmux commands | TypeScript · ★3 |
+| [dcieslak19973/wmux](https://github.com/dcieslak19973/wmux) | Deliver a Tauri v2 + ConPTY terminal with OSC 9/99/777 notification parsing, sidebar metadata, session persistence, and a tmux.exe compatibility shim for migration | JavaScript · ★1 |
+| [Kazsuto/wmux](https://github.com/Kazsuto/wmux) | Provide a native Rust + D3D12/wgpu terminal with 80+ JSON-RPC v2 commands over Named Pipes (HMAC-SHA256 auth), Ghostty-compatible config, and command palette | Rust |
 
 ### Linux
 
@@ -563,8 +656,10 @@ These projects work across multiple agents or are agent-agnostic.
 | [asermax/seemux](https://github.com/asermax/seemux) | Provide a GTK4 terminal with tabbed sidebar, real-time Claude Code status, tab groups, quake dropdown, agent teams, and full session persistence | Rust |
 | [nice-bills/lmux](https://github.com/nice-bills/lmux) | Build a pure-C GTK4/VTE terminal with split browser panes, D-Bus notifications, toggleable sidebar, and vim-style navigation | C |
 | [anurag-arjun/cove](https://github.com/anurag-arjun/cove) | Fork Ghostty's GTK frontend adding a vertical workspace sidebar, keyboard navigation, planned socket API, and WebKitGTK browser | Zig |
+| [douglas/cmux-gtk](https://github.com/douglas/cmux-gtk) | Provide a full GTK4/libadwaita port with the same socket API (V1 60 commands + V2 210+ methods), WebKit6 browser, and `cmux ssh` for remote workspaces — closest feature parity with macOS cmux | Rust · ★8 |
 | [bradwilson331/cmux-linux](https://github.com/bradwilson331/cmux-linux) | Port cmux to Linux with Rust, GTK4, GPU-accelerated Ghostty rendering, CDP browser automation, and a 34-subcommand socket CLI | Rust |
 | [cai0baa/cmux-for-linux](https://github.com/cai0baa/cmux-for-linux) | Deliver a cross-platform Tauri workspace with React and xterm.js, now branded ptrcode, with workspaces and resizable splits | TypeScript · ★17 |
+| [LucasPC-hub/lcmux](https://github.com/LucasPC-hub/lcmux) | Build a GTK4/VTE4 port with NixOS flake, Arch packages, and WebKitGTK 6.0 browser — wire-compatible with macOS cmux socket protocol for plugin reuse | Rust |
 
 ---
 
@@ -593,10 +688,15 @@ Projects that solve similar problems without requiring the cmux application itse
 | [wrock/wezterm-agent-cards](https://github.com/wrock/wezterm-agent-cards) | Replicate cmux's status-card UX in WezTerm via a curses-based sidebar with Claude Code hooks | Python |
 | [davis7dotsh/my-term](https://github.com/davis7dotsh/my-term) | Prototype a native macOS terminal with an Arc-style persistent sidebar using SwiftTerm | Swift |
 | [ipdelete/cmux](https://github.com/ipdelete/cmux) | Build an Electron workspace with Copilot CLI/SDK integration, Monaco editor, and PTY terminals | TypeScript |
+| [Diogenesoftoronto/dellij](https://github.com/Diogenesoftoronto/dellij) | Manage parallel agents via Zellij tabs where each workspace maps to a git worktree with a WASM status plugin, optional GPUI GUI, and Android app via Convex | Rust · ★1 |
+| [Tom-R-Main/execuTerm](https://github.com/Tom-R-Main/execuTerm) | Build a native macOS app on cmux + libghostty with a task-board dashboard synced from ExecuFunction SaaS, context injection, and semantic search | Swift · ★1 |
+| [vcabeli/wezmux](https://github.com/vcabeli/wezmux) | Fork WezTerm adding cmux-inspired workspace management: persistent sidebar, git/PR metadata, OSC 7777 agent status, blue ring notifications, and auto-injected Claude Code + Codex hooks | Rust |
+| [kght6123/madori](https://github.com/kght6123/madori) | Provide a browser-based terminal multiplexer (Node.js + React + xterm.js) with vertical tab sidebar, WebGL rendering, and OSC notifications — Japanese-language alternative to native terminals | TypeScript |
 
 ### Forks
 
 - [llv22/cmux_forward](https://github.com/llv22/cmux_forward) — Add working-directory restore for Bash sessions. One patch over upstream. Swift
+- [israeligal/cmux-file-explorer](https://github.com/israeligal/cmux-file-explorer) — Add a file explorer sidebar, native text editor, and CWD sync between explorer and terminal panes. Swift
 
 ---
 
@@ -636,6 +736,9 @@ For the full CLI and socket protocol reference:
 | [webkaz/cmux-intel-builds](https://github.com/webkaz/cmux-intel-builds) | Automate Intel Mac x86_64 builds by polling upstream releases every 6 hours and publishing unsigned DMGs | — |
 | [budah1987/homebrew-tools](https://github.com/budah1987/homebrew-tools) | Install the cmux workspace launcher script via Homebrew with dependency management | Ruby |
 | [anhoder/homebrew-repo](https://github.com/anhoder/homebrew-repo) | Distribute a `cmux-nightly` cask via a personal Homebrew tap | Ruby |
+| [manaflow-ai/homebrew-cmux](https://github.com/manaflow-ai/homebrew-cmux) | Provide the official Homebrew tap for cmux with stable and nightly casks maintained by Manaflow | Ruby · ★3 |
+| [manaflow-ai/chromium](https://github.com/manaflow-ai/chromium) | Build a Chromium content shell for cmux's browser engine with prebuilt framework downloads for plugin developers | Obj-C++ |
+| [manaflow-ai/vscode](https://github.com/manaflow-ai/vscode) | Fork VS Code to replace the web terminal with a cmux backend for `code serve-web` sessions | — |
 
 ### Upstream Dependencies
 
