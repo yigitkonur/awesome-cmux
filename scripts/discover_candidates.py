@@ -190,10 +190,10 @@ def suggest_section(slug: str, description: str, evidence_hits: list[EvidenceHit
 
 
 def classify_candidate(repo: RepoCandidate, excluded_slugs: set[str], minimum_candidate_score: int) -> str:
-    if repo.slug in excluded_slugs:
-        return "excluded"
     if repo.already_listed:
         return "listed"
+    if repo.slug in excluded_slugs:
+        return "excluded"
     if repo.archived:
         return "excluded"
     if not repo.metadata_loaded:
