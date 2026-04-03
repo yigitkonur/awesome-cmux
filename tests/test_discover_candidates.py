@@ -44,12 +44,12 @@ class DiscoveryCoreTests(unittest.TestCase):
 
     def test_score_repo_evidence_prefers_env_var_hits(self):
         hits = [
-            dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=5, path="src/cmux.ts"),
-            dc.EvidenceHit(signal="CMUX_SURFACE_ID", weight=5, path="README.md"),
+            dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=10, path="src/cmux.ts"),
+            dc.EvidenceHit(signal="CMUX_SURFACE_ID", weight=10, path="README.md"),
             dc.EvidenceHit(signal="cmux browser", weight=2, path=".claude/skills/cmux/SKILL.md"),
         ]
         score = dc.score_evidence(hits)
-        self.assertGreaterEqual(score, 10)
+        self.assertGreaterEqual(score, 13)
 
     def test_status_review_when_only_weak_hits_inflate_score(self):
         weak_hits = [
@@ -67,6 +67,7 @@ class DiscoveryCoreTests(unittest.TestCase):
             archived=False,
             has_readme=True,
             already_listed=False,
+            metadata_loaded=True,
             evidence_hits=weak_hits,
             score=dc.score_evidence(weak_hits),
             suggested_section="",
@@ -82,8 +83,8 @@ class DiscoveryCoreTests(unittest.TestCase):
 
     def test_status_candidate_requires_readme_and_not_archived(self):
         strong_hits = [
-            dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=5, path="src/cmux.ts"),
-            dc.EvidenceHit(signal="CMUX_SURFACE_ID", weight=5, path="README.md"),
+            dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=10, path="src/cmux.ts"),
+            dc.EvidenceHit(signal="CMUX_SURFACE_ID", weight=10, path="README.md"),
         ]
         repo = dc.RepoCandidate(
             slug="example/repo",
@@ -94,6 +95,7 @@ class DiscoveryCoreTests(unittest.TestCase):
             archived=False,
             has_readme=True,
             already_listed=False,
+            metadata_loaded=True,
             evidence_hits=strong_hits,
             score=dc.score_evidence(strong_hits),
             suggested_section="By Agent > Pi",
@@ -117,6 +119,7 @@ class DiscoveryCoreTests(unittest.TestCase):
             archived=False,
             has_readme=True,
             already_listed=False,
+            metadata_loaded=True,
             evidence_hits=[],
             score=3,
             suggested_section="",
@@ -140,6 +143,7 @@ class DiscoveryCoreTests(unittest.TestCase):
             archived=False,
             has_readme=False,
             already_listed=False,
+            metadata_loaded=True,
             evidence_hits=[],
             score=12,
             suggested_section="",
@@ -164,6 +168,88 @@ class DiscoveryCoreTests(unittest.TestCase):
     def test_path_penalty_downgrades_generated_or_vendored_paths(self):
         penalty = dc.path_confidence_adjustment(".claude/skills/cmux/SKILL.md")
         self.assertLess(penalty, 0)
+
+    def test_high_confidence_gate_requires_cmux_env_var_signal(self):
+        self.assertTrue(
+            dc.has_high_confidence_evidence(
+                [dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=10, path="src/app.ts")]
+            )
+        )
+        self.assertFalse(
+            dc.has_high_confidence_evidence(
+                [dc.EvidenceHit(signal="cmux browser", weight=2, path="src/app.ts")]
+            )
+        )
+
+    def test_render_markdown_report_prioritizes_candidate_rows(self):
+        candidates = [
+            dc.RepoCandidate(
+                slug="example/candidate",
+                stars=42,
+                language="TypeScript",
+                updated="2026-04-03",
+                description="candidate repo",
+                archived=False,
+                has_readme=True,
+                already_listed=False,
+                metadata_loaded=True,
+                evidence_hits=[dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=10, path="src/app.ts")],
+                score=10,
+                suggested_section="By Agent > Pi",
+                status="candidate",
+                notes=[],
+            ),
+            dc.RepoCandidate(
+                slug="example/review",
+                stars=3,
+                language="Shell",
+                updated="2026-04-03",
+                description="review repo",
+                archived=False,
+                has_readme=True,
+                already_listed=False,
+                metadata_loaded=True,
+                evidence_hits=[dc.EvidenceHit(signal="cmux browser", weight=2, path="docs/readme.md")],
+                score=2,
+                suggested_section="",
+                status="review",
+                notes=[],
+            ),
+        ]
+
+        report = dc.render_markdown_report(candidates, included_statuses={"candidate", "review"})
+
+        self.assertIn("| repo | status | score | stars | language | updated | suggested section | evidence |", report)
+        self.assertLess(report.index("example/candidate"), report.index("example/review"))
+        self.assertIn("CMUX_WORKSPACE_ID", report)
+        self.assertIn("By Agent > Pi", report)
+
+    def test_render_json_report_includes_results(self):
+        payload = dc.render_json_report(
+            [
+                dc.RepoCandidate(
+                    slug="example/candidate",
+                    stars=42,
+                    language="TypeScript",
+                    updated="2026-04-03",
+                    description="candidate repo",
+                    archived=False,
+                    has_readme=True,
+                    already_listed=False,
+                    metadata_loaded=True,
+                    evidence_hits=[dc.EvidenceHit(signal="CMUX_WORKSPACE_ID", weight=10, path="src/app.ts")],
+                    score=10,
+                    suggested_section="By Agent > Pi",
+                    status="candidate",
+                    notes=["source search ok"],
+                )
+            ],
+            included_statuses={"candidate"},
+        )
+
+        self.assertIn('"slug": "example/candidate"', payload)
+        self.assertIn('"status": "candidate"', payload)
+        self.assertIn('"source search ok"', payload)
 
 
 if __name__ == "__main__":
