@@ -157,6 +157,32 @@ class DiscoveryCoreTests(unittest.TestCase):
         )
         self.assertEqual(status, "excluded")
 
+    def test_already_listed_wins_over_excluded_slug(self):
+        repo = dc.RepoCandidate(
+            slug="manaflow-ai/cmux",
+            stars=999,
+            language="TypeScript",
+            updated="2026-04-03",
+            description="listed repo",
+            archived=False,
+            has_readme=True,
+            already_listed=True,
+            metadata_loaded=True,
+            evidence_hits=[],
+            score=0,
+            suggested_section="",
+            status="",
+            notes=[],
+        )
+
+        status = dc.classify_candidate(
+            repo,
+            excluded_slugs={"manaflow-ai/cmux"},
+            minimum_candidate_score=8,
+        )
+
+        self.assertEqual(status, "listed")
+
     def test_suggest_section_for_pi_repo(self):
         section = dc.suggest_section(
             slug="sanurb/pi-cmux-browser",
