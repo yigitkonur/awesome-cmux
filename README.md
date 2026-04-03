@@ -52,6 +52,9 @@ brew install --cask cmux-nightly  # nightly
 | [hopchouinard/cmux-plugin](https://github.com/hopchouinard/cmux-plugin) | `sidebar` `notify` | Auto-renames workspace tab to git repo name, notifies on completion, includes restraint rules | Shell |
 | [blueraai/bluera-base](https://github.com/blueraai/bluera-base) | `hooks` | Skill package with 5 reference docs and benchmark evaluations for cmux task performance | — |
 | [claude-studio/claude-studio](https://github.com/claude-studio/claude-studio) | `hooks` | Ships two cmux CLI reference docs as CLAUDE.md tool context for workspace and browser control | — |
+| [yigitkonur/cmux-claude-pro](https://github.com/yigitkonur/cmux-claude-pro) | `sidebar` `notify` | 16-hook Claude Code integration: sidebar status, progress, logs, notifications, git metadata, subagent tracking | TypeScript |
+| [KyleJamesWalker/cc-cmux-plugin](https://github.com/KyleJamesWalker/cc-cmux-plugin) | `sidebar` `notify` | Claude Code plugin: injects cmux reference docs, sets sidebar status, forwards notifications | — |
+| [Mirksen/cmux-toolkit](https://github.com/Mirksen/cmux-toolkit) | `layout` `sidebar` | Hooks open a Vim subpane and broot sidebar per Claude session, with `/resume` support | Shell |
 
 **Skills**
 
@@ -66,6 +69,8 @@ brew install --cask cmux-nightly  # nightly
 | [bocktae80/cmux-pilot](https://github.com/bocktae80/cmux-pilot) | `layout` | `/cmux-ws` commands to save/restore workspace layouts with cron autosave. Docs in Korean |
 | [jhta/cmux-skill](https://github.com/jhta/cmux-skill) | `workflow` | Neovim + git diff patterns: open files, delta diffs, run tests in adjacent panes |
 | [halindrome/cmux-tmux-mapping-for-cc](https://github.com/halindrome/cmux-tmux-mapping-for-cc) | `compat` | tmux abstraction layer routing to cmux or tmux by environment. WIP |
+| [hummer98/using-cmux](https://github.com/hummer98/using-cmux) | `orchestration` | Visible sub-agent lifecycle patterns: split, send, `read-screen`, status, notifications, recovery · ★24 |
+| [goddaehee/cmux-claude-skill](https://github.com/goddaehee/cmux-claude-skill) | `cli-ref` | Verified CLI/browser reference, tmux migration guide, and plugin activation patterns. Docs in Korean |
 
 ### Pi
 
@@ -77,6 +82,11 @@ brew install --cask cmux-nightly  # nightly
 | [joelhooks/pi-cmux](https://github.com/joelhooks/pi-cmux) | `sidebar` `notify` | 3s sidebar heartbeat, AI session naming via Haiku, worker mode for subagents | TypeScript · ★9 |
 | [simonjohansson/pi-cmux](https://github.com/simonjohansson/pi-cmux) | `sidebar` | Single `cmux_cli` tool passing any argv to cmux. Configurable via `CMUX_CLI_PATH` | TypeScript |
 | [storelayer/pi-cmux-browser](https://github.com/storelayer/pi-cmux-browser) | `browser` | Full `cmux browser` CLI (36+ actions) with persistent surface tracking | JavaScript |
+| [Attamusc/pi-cmux](https://github.com/Attamusc/pi-cmux) | `sidebar` `notify` | Socket-first sidebar integration with progress bars, log throttling, and notifications | TypeScript |
+| [sanurb/pi-cmux](https://github.com/sanurb/pi-cmux) | `sidebar` `notify` | Safe workspace helper allowlist plus sidebar status and focus-aware notifications | TypeScript |
+| [sanurb/pi-cmux-browser](https://github.com/sanurb/pi-cmux-browser) | `browser` | Typed browser tool with persistent surface state and optional web-dev subagent | TypeScript |
+| [sanurb/pi-cmux-workflows](https://github.com/sanurb/pi-cmux-workflows) | `layout` `browser` | Slash commands for splits, handoffs, and ringi review panes in cmux browser | TypeScript |
+| [mastertyko/pi-cmux-preview](https://github.com/mastertyko/pi-cmux-preview) | `browser` | Renders assistant Markdown through cmux browser and can keep the preview pane open | TypeScript |
 
 ### OpenCode
 
@@ -87,6 +97,8 @@ brew install --cask cmux-nightly  # nightly
 | [0xCaso/opencode-cmux](https://github.com/0xCaso/opencode-cmux) | `sidebar` `notify` | Status pills, todo-driven progress, timeline logs, unread marks — scoped per workspace | TypeScript · ★23 |
 | [Attamusc/opencode-cmux](https://github.com/Attamusc/opencode-cmux) | `sidebar` | Socket JSON-RPC (~1-2ms), render throttling, log rate limiting, subagent detection | TypeScript |
 | [Joehoel/opencode-cmux](https://github.com/Joehoel/opencode-cmux) | `sidebar` `notify` | OpenCode plugin + Zsh integration polling Azure DevOps and Jira as sidebar pills | Shell |
+| [mspiegel31/opencode-cmux](https://github.com/mspiegel31/opencode-cmux) | `layout` `browser` | Subagent viewer panes, notification hooks, and optional `cmux browser` tools for OpenCode | TypeScript |
+| [tully-8888/opencode-cmux-notify-plugin](https://github.com/tully-8888/opencode-cmux-notify-plugin) | `sidebar` `notify` | Live sidebar status plus question, permission, retry, and finish notifications | Shell |
 
 ### Copilot & Amp
 
@@ -124,6 +136,7 @@ brew install --cask cmux-nightly  # nightly
 | [baixianger/claude-orchestration-in-cmux](https://github.com/baixianger/claude-orchestration-in-cmux) | Pane delegation via `cmux send`/`read-screen`, coordinated through worktrees |
 | [Th3Sp3ct3R/cmux-claude-agents](https://github.com/Th3Sp3ct3R/cmux-claude-agents) | `PreToolUse` hook redirecting Agent calls to visible cmux panes |
 | [ygrec-app/offload-task-skill](https://github.com/ygrec-app/offload-task-skill) | Split pane, launch `claude --dangerously-skip-permissions`, return to main session |
+| [meengi07/cmux-agent-observer-skill](https://github.com/meengi07/cmux-agent-observer-skill) | Visible worker-pane launcher for Codex/OpenCode in cmux, with optional tmux wrapping and browser helper |
 
 ### MCP Servers
 
@@ -142,6 +155,7 @@ brew install --cask cmux-nightly  # nightly
 | [monzou/mo-cmux](https://github.com/monzou/mo-cmux) | `browser` | Live-reload Markdown server in cmux browser split | Shell |
 | [doublezz10/figure-viewer](https://github.com/doublezz10/figure-viewer) | `browser` | HTML figure gallery in cmux pane, auto-refreshes on new images | JavaScript |
 | [RyoHirota68/cmux-pencil-preview](https://github.com/RyoHirota68/cmux-pencil-preview) | `browser` | `PostToolUse` hook: export PDF, reload cmux browser pane per design iteration | Shell |
+| [jaequery/cmux-diff](https://github.com/jaequery/cmux-diff) | `browser` | Changes panel in a cmux browser split with syntax-highlighted diffs and AI commit messages | TypeScript |
 
 ### Workspace & Worktrees
 
@@ -152,6 +166,7 @@ brew install --cask cmux-nightly  # nightly
 | [bhandeland/fleet](https://github.com/bhandeland/fleet) | `worktree` `orchestrate` | Workspace per branch, sidebar badges, multi-agent team splits. Degrades without cmux | Shell |
 | [tasuku43/kra](https://github.com/tasuku43/kra) | `worktree` | Persistent ticket → filesystem → cmux workspace mapping with auto-reconciliation | Go |
 | [wwaIII/proj](https://github.com/wwaIII/proj) | `layout` | TUI project launcher opening named cmux workspaces with `[CC]` activity badges | Rust |
+| [eunjae-lee/cmux-worktree](https://github.com/eunjae-lee/cmux-worktree) | `worktree` `layout` | YAML workspace provider with worktree creation, workflows, split layouts, and browser isolation | TypeScript |
 
 ### Monitor & Restore Sessions
 
@@ -162,6 +177,15 @@ brew install --cask cmux-nightly  # nightly
 | [alaasdk/cmux-ctl](https://github.com/alaasdk/cmux-ctl) | `monitor` | Real-time TUI dashboard of all workspaces with agent send/stop shortcuts | Python |
 | [taichiiwamoto-s/cmux-context](https://github.com/taichiiwamoto-s/cmux-context) | `monitor` | Scrapes Claude status bar from every workspace, renders context-fill dashboard | Shell |
 | [ensarkovankaya/cmux-mirror](https://github.com/ensarkovankaya/cmux-mirror) | `monitor` | Mirrors remote cmux layout to local instance over SSH | Python |
+| [STRML/cmux-restore](https://github.com/STRML/cmux-restore) | `monitor` | Captures Claude session IDs per surface and resumes exact sessions after cmux restarts | Shell |
+| [drolosoft/cmux-resurrect](https://github.com/drolosoft/cmux-resurrect) | `monitor` | Saves and restores workspaces, splits, CWDs, commands, and Markdown workspace blueprints | Go |
+
+### Remote & Mobile
+
+| Repo | Tags | Description | Lang |
+|------|------|-------------|------|
+| [hummer98/cmux-remote](https://github.com/hummer98/cmux-remote) | `monitor` | Self-hosted PWA bridge for remote workspace viewing and surface switching over WebSocket | TypeScript |
+| [itsmaleen/cmux-companion](https://github.com/itsmaleen/cmux-companion) | `monitor` `notify` | iPhone companion app: mirror notifications, switch workspaces/surfaces, send voice commands via LAN bridge | Swift |
 
 ### Launchers
 
@@ -189,6 +213,7 @@ brew install --cask cmux-nightly  # nightly
 | [asermax/seemux](https://github.com/asermax/seemux) | — | Rust/GTK4, 30+ releases: tab groups, splits, Claude hooks, quake mode, plugin marketplace | Rust |
 | [nice-bills/lmux](https://github.com/nice-bills/lmux) | — | Pure C, GTK4/VTE/WebKitGTK: browser split, D-Bus notifications, socket API | C |
 | [anurag-arjun/cove](https://github.com/anurag-arjun/cove) | — | Ghostty GTK fork with vertical workspace sidebar, notification badges | Zig |
+| [bradwilson331/cmux-linux](https://github.com/bradwilson331/cmux-linux) | — | GTK4/libghostty port with browser automation, socket CLI, and session persistence | Rust |
 
 ---
 
@@ -214,6 +239,7 @@ brew install --cask cmux-nightly  # nightly
 | [wrock/wezterm-agent-cards](https://github.com/wrock/wezterm-agent-cards) | WezTerm sidebar replicating cmux's status-card UX via curses and Claude hooks | Python |
 | [davis7dotsh/my-term](https://github.com/davis7dotsh/my-term) | Native macOS prototype with Arc-style persistent sidebar, SwiftTerm | Swift |
 | [ipdelete/cmux](https://github.com/ipdelete/cmux) | Electron workspace using Copilot CLI/SDK, Monaco editor, PTY terminals | TypeScript |
+| [cai0baa/cmux-for-linux](https://github.com/cai0baa/cmux-for-linux) | Cross-platform Tauri workspace inspired by cmux, now branded ptrcode, with workspaces and split panes | TypeScript · ★17 |
 
 ### Forks
 
