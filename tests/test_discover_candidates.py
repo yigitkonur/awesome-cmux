@@ -251,6 +251,79 @@ class DiscoveryCoreTests(unittest.TestCase):
         self.assertIn('"status": "candidate"', payload)
         self.assertIn('"source search ok"', payload)
 
+    def test_parse_args_uses_approved_cli_flags(self):
+        args = dc.parse_args(
+            [
+                "--limit-per-signal",
+                "10",
+                "--minimum-candidate-score",
+                "12",
+                "--include-listed",
+                "--include-excluded",
+                "--format",
+                "markdown",
+            ]
+        )
+
+        self.assertEqual(args.limit_per_signal, 10)
+        self.assertEqual(args.minimum_candidate_score, 12)
+        self.assertTrue(args.include_listed)
+        self.assertTrue(args.include_excluded)
+
+    def test_build_candidates_marks_listed_repos_from_readme(self):
+        original_search = dc.search_code_for_signal
+        original_fetch = dc.fetch_repository_metadata
+        original_readme = dc.README
+
+        class DummyReadme:
+            def read_text(self):
+                return "| [example/listed](https://github.com/example/listed) |\n"
+
+        try:
+            dc.README = DummyReadme()
+
+            def fake_search(signal):
+                if signal.name != "CMUX_WORKSPACE_ID":
+                    return []
+                return [{"repository": {"nameWithOwner": "example/listed"}, "path": "src/cmux.ts"}]
+
+            def fake_fetch(slugs, batch_size=dc.DEFAULT_METADATA_BATCH_SIZE):
+                return (
+                    {
+                        "example/listed": {
+                            "slug": "example/listed",
+                            "stars": 9,
+                            "language": "TypeScript",
+                            "updated": "2026-04-03",
+                            "description": "listed repo",
+                            "archived": False,
+                            "has_readme": True,
+                            "metadata_loaded": True,
+                        }
+                    },
+                    [],
+                )
+
+            dc.search_code_for_signal = fake_search
+            dc.fetch_repository_metadata = fake_fetch
+
+            candidates, warnings = dc.build_candidates(
+                signals=(
+                    dc.SignalSpec("CMUX_WORKSPACE_ID", "CMUX_WORKSPACE_ID", 10, 1),
+                ),
+                candidate_score=8,
+                metadata_batch_size=1,
+            )
+
+            self.assertEqual(warnings, [])
+            self.assertEqual(len(candidates), 1)
+            self.assertEqual(candidates[0].status, "listed")
+            self.assertTrue(candidates[0].already_listed)
+        finally:
+            dc.search_code_for_signal = original_search
+            dc.fetch_repository_metadata = original_fetch
+            dc.README = original_readme
+
 
 if __name__ == "__main__":
     unittest.main()
