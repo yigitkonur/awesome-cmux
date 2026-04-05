@@ -4,24 +4,10 @@
 
 cmux exposes three primitives that the entire plugin ecosystem builds on: `CMUX_WORKSPACE_ID`, `CMUX_SURFACE_ID`, and `CMUX_SOCKET_PATH`. Every project below uses at least one of them.
 
----
-
-## Quick Start
-
 ```sh
 brew install --cask cmux          # stable
 brew install --cask cmux-nightly  # nightly
 ```
-
-| Resource | Link |
-|----------|------|
-| Website | [cmux.dev](https://www.cmux.dev/) |
-| Source | [github.com/manaflow-ai/cmux](https://github.com/manaflow-ai/cmux) |
-| Downloads | [Stable DMG](https://github.com/manaflow-ai/cmux/releases/latest/download/cmux-macos.dmg) · [Nightly DMG](https://github.com/manaflow-ai/cmux/releases/download/nightly/cmux-nightly-macos.dmg) |
-| Docs | [Getting Started](https://www.cmux.dev/docs/getting-started) · [Concepts](https://www.cmux.dev/docs/concepts) · [Configuration](https://www.cmux.dev/docs/configuration) · [Shortcuts](https://www.cmux.dev/docs/keyboard-shortcuts) |
-| API | [Reference](https://www.cmux.dev/docs/api) · [Browser](https://www.cmux.dev/docs/browser-automation) · [Notifications](https://www.cmux.dev/docs/notifications) |
-| Homebrew tap | [manaflow-ai/homebrew-cmux](https://github.com/manaflow-ai/homebrew-cmux) |
-| Blog | [Introducing cmux](https://www.cmux.dev/blog/introducing-cmux) · [Show HN](https://www.cmux.dev/blog/show-hn-launch) · [Zen of cmux](https://www.cmux.dev/blog/zen-of-cmux) |
 
 ---
 
@@ -43,6 +29,7 @@ brew install --cask cmux-nightly  # nightly
 | Run cmux on Windows or Linux | [Cross-Platform Ports](#cross-platform-ports) |
 | Use something tmux-based instead | [Alternatives](#alternatives) |
 | Build my own plugin | [Build Your Own Plugin](#build-your-own-plugin) |
+| Read the official docs offline | [Documentation](#documentation) |
 
 ---
 
@@ -67,7 +54,7 @@ brew install --cask cmux-nightly  # nightly
 - [Cross-Platform Ports](#cross-platform-ports)
 - [Alternatives](#alternatives)
 - [Build Your Own Plugin](#build-your-own-plugin)
-- [Reference](#reference)
+- [Reference](#reference) — official docs, build infra, community
 
 ---
 
@@ -716,15 +703,56 @@ The main integration points:
 
 For a detailed walkthrough of the sidebar integration API, see [docs/sidebar-integration-api.md](./docs/sidebar-integration-api.md).
 
-For the full CLI and socket protocol reference:
-- [cmux API Reference](https://www.cmux.dev/docs/api)
-- [Browser Automation](https://www.cmux.dev/docs/browser-automation)
-- [Notifications](https://www.cmux.dev/docs/notifications)
+For the full CLI and socket protocol reference, see the [Documentation](#documentation) section or the self-contained docs:
+- [API Reference](./docs/reference/api.md) — full CLI and socket JSON-RPC protocol
+- [Browser Automation](./docs/reference/browser-automation.md) — 40+ subcommands for the embedded WebKit browser
+- [Notifications](./docs/reference/notifications.md) — CLI, OSC 777/99, and agent hook integration
+- [SSH](./docs/reference/ssh.md) — remote workspaces with browser proxying and notification relay
 - [AppleScript Automation Guide](./docs/applescript/README.md) — 10-part deep-dive covering CLI wrappers, socket v2, and automation recipes
 
 ---
 
 ## Reference
+
+### Official Resources
+
+| Resource | Link |
+|----------|------|
+| Website | [cmux.dev](https://www.cmux.dev/) |
+| Source | [github.com/manaflow-ai/cmux](https://github.com/manaflow-ai/cmux) |
+| Downloads | [Stable DMG](https://github.com/manaflow-ai/cmux/releases/latest/download/cmux-macos.dmg) · [Nightly DMG](https://github.com/manaflow-ai/cmux/releases/download/nightly/cmux-nightly-macos.dmg) |
+| Homebrew tap | [manaflow-ai/homebrew-cmux](https://github.com/manaflow-ai/homebrew-cmux) |
+| Blog | [Introducing cmux](https://www.cmux.dev/blog/introducing-cmux) · [Show HN](https://www.cmux.dev/blog/show-hn-launch) · [Zen of cmux](https://www.cmux.dev/blog/zen-of-cmux) |
+
+### Documentation
+
+Comprehensive self-contained reference docs mirrored from [cmux.com/docs](https://cmux.com/docs) — see the [full index](./docs/reference/README.md).
+
+**Core**
+
+| Document | Description |
+|----------|-------------|
+| [Getting Started](./docs/reference/getting-started.md) | Installation, CLI setup, auto-updates, session restore, and system requirements |
+| [Concepts](./docs/reference/concepts.md) | The Window > Workspace > Pane > Surface > Panel hierarchy |
+| [Configuration](./docs/reference/configuration.md) | Ghostty config and `settings.json` schema reference with every supported key |
+| [Custom Commands](./docs/reference/custom-commands.md) | `cmux.json` format for command palette commands and declarative workspace layouts |
+| [Keyboard Shortcuts](./docs/reference/keyboard-shortcuts.md) | All default shortcuts with binding keys for customization, including chord support |
+
+**API & Automation**
+
+| Document | Description |
+|----------|-------------|
+| [API Reference](./docs/reference/api.md) | Full CLI and Unix socket JSON-RPC protocol — workspaces, splits, input, notifications, sidebar metadata |
+| [Browser Automation](./docs/reference/browser-automation.md) | 40+ `cmux browser` subcommands — navigation, DOM interaction, inspection, JS eval, state management |
+| [Notifications](./docs/reference/notifications.md) | Desktop notifications via CLI, OSC 777/99, Claude Code hooks, and Copilot CLI hooks |
+| [SSH](./docs/reference/ssh.md) | Remote workspaces with browser proxying, drag-and-drop scp, notification relay, and auto-reconnect |
+
+**Agent Integrations**
+
+| Document | Description |
+|----------|-------------|
+| [Claude Code Teams](./docs/reference/claude-code-teams.md) | `cmux claude-teams` — teammate agents as native cmux splits via tmux shim translation |
+| [oh-my-opencode](./docs/reference/oh-my-opencode.md) | `cmux omo` — OpenCode with oh-my-openagent multi-model orchestration in cmux splits |
 
 ### Build & Distribution
 
