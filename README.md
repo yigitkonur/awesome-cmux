@@ -170,6 +170,7 @@ When an agent finishes a task, hits an error, or needs permission, you want to k
 | ![Shell](https://img.shields.io/badge/-555555?logo=gnubash&logoColor=white&style=flat-square) [Michael-Z-Freeman/antigravity-cmux-notify](https://github.com/Michael-Z-Freeman/antigravity-cmux-notify) | — | Fire cmux notifications when Google Antigravity CLI completes tasks, with a workspace-scoped hooks.json and a global install template. | — |
 | ![Shell](https://img.shields.io/badge/-555555?logo=gnubash&logoColor=white&style=flat-square) [Michael-Z-Freeman/gemini-cli-cmux-notify](https://github.com/Michael-Z-Freeman/gemini-cli-cmux-notify) | — | Deliver Gemini CLI completion alerts — pane rings, tab badges, optional spoken say — into cmux over SSH where cmux hooks gemini install is unavailable on remote machines. | — |
 | ![JavaScript](https://img.shields.io/badge/-555555?logo=javascript&logoColor=white&style=flat-square) [lucaskenda/opencode-notify-cmux](https://github.com/lucaskenda/opencode-notify-cmux) | OpenCode | Forward OpenCode session waiting, failure, and completion events to cmux desktop notifications, bridging OpenCode's hook system to native alerts. | — |
+| ![Python](https://img.shields.io/badge/-555555?logo=python&logoColor=white&style=flat-square) [elitecoder/assistant](https://github.com/elitecoder/assistant) | Claude Code | Subscribe to the cmux event stream and pattern-match each turn-completion screen via `cmux read-screen` to send Telegram or Slack alerts only when PR merges, CI passes, or input is needed; suppresses noise on bare turn-ends, unlike hook-only notifiers that fire on every Stop event. | — |
 
 ### 5. Multi-Agent Orchestration
 
@@ -431,6 +432,7 @@ Agents can run for hours. When cmux restarts, crashes, or you close the lid, you
 | ![Python](https://img.shields.io/badge/-555555?logo=python&logoColor=white&style=flat-square) [puchkoff/cmux-session-cleaner](https://github.com/puchkoff/cmux-session-cleaner) | Claude Code | Prune dead PIDs from the cmux Claude hook-sessions file on each session end, preventing the file growth that makes cmux accumulate gigabytes of RAM. | — |
 | ![Rust](https://img.shields.io/badge/-555555?logo=rust&logoColor=white&style=flat-square) [lin-labs/mission-control](https://github.com/lin-labs/mission-control) | — | Poll cmux workspace state in a Rust TUI dashboard and surface live agent status, pane contents, and workspace health side by side outside the cmux window. | — |
 | ![Shell](https://img.shields.io/badge/-555555?logo=gnubash&logoColor=white&style=flat-square) [arcticShadow/gc-session-cmux](https://github.com/arcticShadow/gc-session-cmux) | — | Implement the Gas City exec-session-provider protocol so Gas City uses cmux as its session backend, mapping rig-scoped sessions to workspaces over the socket. | — |
+| ![Python](https://img.shields.io/badge/-555555?logo=python&logoColor=white&style=flat-square) [elitecoder/assistant](https://github.com/elitecoder/assistant) | Claude Code | Monitor a fleet of Claude Code workspaces via the cmux event stream and `cmux read-screen`; a background daemon tracks Stop, Notification, and AskUserQuestion hooks and escalates only pattern-matched noteworthy screens via Telegram or Slack — unlike dashboard monitors, never requires eyes-on supervision. | — |
 
 ### 9. Remote & Mobile Access
 
@@ -534,6 +536,7 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | ![TypeScript](https://img.shields.io/badge/-555555?logo=typescript&logoColor=white&style=flat-square) [jaequery/cmux-diff](https://github.com/jaequery/cmux-diff) | `browser` `sidebar` | Show syntax-highlighted diffs in a browser split with AI-generated commit messages | — |
 | [niaeee/cmux_skill](https://github.com/niaeee/cmux_skill) | `sidebar` `orchestrate` `monitor` | Orchestrate 124 domain specialists via 18 hooks and surface watcher for IDLE/ERROR/STALL detection, in Korean | — |
 | ![Shell](https://img.shields.io/badge/-555555?logo=gnubash&logoColor=white&style=flat-square) [guanxm2617/feishu-openclaw-cmux](https://github.com/guanxm2617/feishu-openclaw-cmux) | `sidebar` `notify` `remote` | Bridge cmux sidebar state bidirectionally to Feishu/Lark with rich cards and command routing | — |
+| ![Python](https://img.shields.io/badge/-555555?logo=python&logoColor=white&style=flat-square) [elitecoder/assistant](https://github.com/elitecoder/assistant) | `monitor` `notify` | Subscribe to the cmux event stream and screen-read each turn-completion to route Telegram or Slack alerts; a daemon tracks Stop, Notification, and AskUserQuestion hooks and fires only when screens match a configurable pattern bank | — |
 
 **Skills** (reference docs that teach Claude Code how to use cmux)
 
@@ -596,6 +599,7 @@ Cross-reference tables organized by the agent you use. Tags tell you which featu
 | ![Python](https://img.shields.io/badge/-555555?logo=python&logoColor=white&style=flat-square) [wrock/wezterm-agent-cards](https://github.com/wrock/wezterm-agent-cards) | `sidebar` `monitor` | Display sessions as stacked status cards in WezTerm with real-time state tracking | — |
 | ![Shell](https://img.shields.io/badge/-555555?logo=gnubash&logoColor=white&style=flat-square) [theforager/cmux](https://github.com/theforager/cmux) | `layout` `monitor` | Provide an interactive tmux session selector with live status, optimized for mobile SSH | — |
 | ![Shell](https://img.shields.io/badge/-555555?logo=gnubash&logoColor=white&style=flat-square) [JacianLiu/cmux-claude-session](https://github.com/JacianLiu/cmux-claude-session) | `monitor` `layout` | Capture and restore sessions using stable layout coordinates instead of volatile surface UUIDs | — |
+| ![Python](https://img.shields.io/badge/-555555?logo=python&logoColor=white&style=flat-square) [elitecoder/assistant](https://github.com/elitecoder/assistant) | `monitor` `notify` | Subscribe to the cmux event stream and `cmux read-screen` to watch agent hooks across all workspaces; a pulse daemon merges finished PRs and escalates only pattern-matched noteworthy screens via Telegram or Slack | — |
 
 **Layout & Config**
 
