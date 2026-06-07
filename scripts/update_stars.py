@@ -82,7 +82,8 @@ def main():
     # Collect all unique repo slugs from entry lines (lines starting with | [ or - [)
     slugs = set()
     for line in lines:
-        if not (line.strip().startswith("| [") or line.strip().startswith("- [")):
+        ls = line.strip()
+        if not (ls.startswith("| [") or ls.startswith("| ![") or ls.startswith("- [")):
             continue
         for m in REPO_PATTERN.finditer(line):
             slug = m.group(1)
@@ -105,23 +106,29 @@ def main():
     updated = 0
     new_lines = []
     for line in lines:
-        if line.strip().startswith("| [") or line.strip().startswith("- ["):
+        ls = line.strip()
+        is_table = ls.startswith("| [") or ls.startswith("| ![")
+        is_list = ls.startswith("- [")
+        if is_table or is_list:
             for m in REPO_PATTERN.finditer(line):
                 slug = m.group(1)
                 info = meta.get(slug)
                 if info:
                     stars = info["stars"]
-                    # Remove existing star annotation
-                    line = STAR_SUFFIX.sub("", line)
-                    if stars >= STAR_THRESHOLD:
-                        line = line.rstrip()
-                        # For table rows ending with |
-                        if line.endswith("|"):
-                            # Insert before the last |
-                            line = line[:-1].rstrip() + f" · ★{stars} |"
-                        else:
+                    if is_table:
+                        # Last table cell is the dedicated star column.
+                        star_txt = f"★{stars}" if stars >= STAR_THRESHOLD else "—"
+                        cells = line.rstrip().rstrip("|").split("|")
+                        cells[-1] = f" {star_txt} "
+                        line = "|".join(cells) + "|"
+                        if stars >= STAR_THRESHOLD:
+                            updated += 1
+                    else:
+                        # List rows keep the inline " · ★N" suffix.
+                        line = STAR_SUFFIX.sub("", line).rstrip()
+                        if stars >= STAR_THRESHOLD:
                             line = line + f" · ★{stars}"
-                        updated += 1
+                            updated += 1
                     break  # Only process first repo link per line
         new_lines.append(line)
 

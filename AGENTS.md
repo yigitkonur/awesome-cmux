@@ -92,17 +92,19 @@ License
 
 Feature dimension sections:
 ```
-| Repo | Agent | Description | Lang |
+| ![Lang](badge) [Repo](url) | Agent | Description | ★ |
 ```
 
 By Agent sections:
 ```
-| Repo | Tags | Description | Lang |
+| ![Lang](badge) [Repo](url) | Tags | Description | ★ |
 ```
 
 Tags use inline code: `` `sidebar` `notify` `progress` ``
 
-Star counts: `★N` suffix in Lang column for repos with 5+ stars.
+**Language badges** — lead the Repo cell with an icon-only, monochrome shields badge (same gray `555555`, white icon; only the `logo` slug changes), then the link. The final column is the star count (`★N`, only for repos with 5+ stars; `—` otherwise). Example:
+`![TypeScript](https://img.shields.io/badge/-555555?logo=typescript&logoColor=white&style=flat-square) [owner/repo](https://github.com/owner/repo)`
+Slugs: TypeScript→`typescript`, Shell→`gnubash`, Rust→`rust`, Python→`python`, JavaScript→`javascript`, Go→`go`, Swift→`swift`, Ruby→`ruby`, C#→`dotnet`, Markdown→`markdown`, Zig→`zig`, C→`c`, Zsh→`zsh`.
 
 ### What NOT to Do
 - Do not flatten back to a by-agent-only structure

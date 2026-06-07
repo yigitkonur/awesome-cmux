@@ -19,14 +19,16 @@ Before opening a PR, verify your entry meets **all three**:
 Feature dimension sections use:
 
 ```md
-| [owner/repo](url) | Agent | Description starting with a verb, 30-50 words | Lang · ★N |
+| ![Lang](badge) [owner/repo](url) | Agent | Description starting with a verb, 30-50 words | ★N |
 ```
 
 By Agent sections use:
 
 ```md
-| [owner/repo](url) | `tag1` `tag2` | Description starting with a verb, 30-50 words | Lang · ★N |
+| ![Lang](badge) [owner/repo](url) | `tag1` `tag2` | Description starting with a verb, 30-50 words | ★N |
 ```
+
+The Repo cell leads with an icon-only monochrome language badge (`https://img.shields.io/badge/-555555?logo=<slug>&logoColor=white&style=flat-square`), then the link. The final column is the star count only.
 
 ## Description Rules
 
@@ -36,7 +38,7 @@ By Agent sections use:
 | Start with a verb | Wire, Push, Deliver, Teach, Expose, Bridge, Fire, etc. |
 | Differentiate | If similar plugins exist for the same agent, explain what makes yours unique |
 | No superlatives | No "best", "most complete", "pioneering", "first" |
-| Stars 5+ only | Format: `★N` in the Lang column. Omit for repos under 5 stars. Updated daily by CI. |
+| Stars 5+ only | Format: `★N` in the final star column (`—` under 5 stars). Updated daily by CI. |
 | No API enumerations | Don't list `execFileSync`, `surface.send_text` — that belongs in the linked repo |
 | No nationality labels | Use "Docs in Korean" if language matters, never "Korean-authored" |
 

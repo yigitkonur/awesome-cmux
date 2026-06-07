@@ -5,3 +5,4 @@
 scripts/discover_candidates.py
 tests/test_discover_candidates.py
 docs/research/discover-candidates.md
+CLAUDE.md
