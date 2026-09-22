@@ -11,6 +11,50 @@ brew install --cask cmux-nightly  # nightly
 
 ---
 
+<details>
+<summary><strong>Table of Contents</strong></summary>
+
+- [Feature Dimensions](#feature-dimensions)
+  - [1. Sidebar & Status Pills](#1-sidebar--status-pills)
+  - [2. Progress Bars & Estimation](#2-progress-bars--estimation)
+  - [3. Sidebar Logs & Activity Feed](#3-sidebar-logs--activity-feed)
+  - [4. Desktop Notifications](#4-desktop-notifications)
+  - [5. Multi-Agent Orchestration](#5-multi-agent-orchestration)
+  - [6. Browser Automation](#6-browser-automation)
+  - [7. Worktrees & Workspace Management](#7-worktrees--workspace-management)
+  - [8. Monitoring & Session Restore](#8-monitoring--session-restore)
+  - [9. Remote & Mobile Access](#9-remote--mobile-access)
+  - [10. Themes, Layouts & Config](#10-themes-layouts--config)
+- [By Agent](#by-agent)
+  - [Claude Code](#claude-code)
+  - [Pi](#pi)
+  - [OpenCode](#opencode)
+  - [Copilot & Amp](#copilot--amp)
+  - [Multi-Agent / Agent-Agnostic](#multi-agent--agent-agnostic)
+- [Cross-Platform Ports](#cross-platform-ports)
+  - [Windows](#windows)
+  - [Linux](#linux)
+  - [Community ports](#community-ports)
+- [Alternatives](#alternatives)
+  - [Community alternatives](#community-alternatives)
+  - [tmux-Based](#tmux-based)
+  - [Other Terminals & Workspaces](#other-terminals--workspaces)
+  - [Forks](#forks)
+- [Build Your Own Plugin](#build-your-own-plugin)
+- [Reference](#reference)
+  - [Official Resources](#official-resources)
+  - [Documentation](#documentation)
+  - [Build & Distribution](#build--distribution)
+  - [Upstream Dependencies](#upstream-dependencies)
+  - [Ghostty Config](#ghostty-config)
+  - [Automation Docs](#automation-docs)
+  - [Community](#community)
+  - [Articles & Coverage](#articles--coverage)
+- [Archived](#archived)
+- [License](#license)
+
+</details>
+
 ## Feature Dimensions
 
 Repos appear in every section they are relevant to. If a project touches sidebar, notifications, and progress, it shows up in all three. This is intentional — browse by the feature you need, not by where someone decided to file it.
